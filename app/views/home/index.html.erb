@@ -1,0 +1,39 @@
+<form id="newentry" class="tt-newentry">
+	<header class="row">
+		<div class="span2">Day</div>
+		<div class="span2">Time</div>
+		<div class="span4">Description</div>
+		<div class="span2">Type</div>
+	</header>
+	<div class="row tt-newentry-fields">
+		<div id="newentry-workdate" class="tt-newentry-workdate span2" data-date="<%=Time.now.to_formatted_s(:simple_date) %>">
+			<span class="tt-newentry-workdate-label label success">Today</span>
+			<input type="text" class="span2" value="<%=Time.now.to_formatted_s(:simple_date) %>">
+		</div>
+		<div class="span2 clearfix">
+			<input type="text" id="newentry-time" class="span2" placeholder="2h 15m">
+		</div>
+		<div class="span4 clearfix">
+			<input type="text" id="newentry-desc" class="span4" placeholder="Redesigning icons... again.">
+		</div>
+		<div class="span2 clearfix">
+			<input type="text" id="newentry-tags" class="span2" placeholder="graphics">
+		</div>
+		<div class="span1">
+			<button id="newentry-btn" class="btn small primary">Add</button>
+		</div>
+	</div>
+</form>
+
+<div id="entries" class="tt-entries">
+	<section class="tt-entry-group">
+		<h2>Today</h2>
+		<p>No entries added yet.</p>
+	</section>
+</div>
+
+<aside id="summary" class="tt-summary tt-shadow-big">
+	<h3>Total Time</h3>
+	<div class="tt-summary-time">
+	</div>
+</aside>

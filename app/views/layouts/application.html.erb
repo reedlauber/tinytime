@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TinyTime | Drive-by time-tracking</title>
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" />
+	<%= stylesheet_link_tag :all %>
+	<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', 'date', 'mustache', 'tt-core', 'tt-util', 'tt-data', 'tt-manager', 'tt-newentry', 'tt-entries' %>
+	<%= csrf_meta_tag %>
+</head>
+<body>
+	<div id="container">
+		<header id="header" class="topbar">
+			<h3 class="container">TinyTime</h3>
+		</header>
+		<div id="content" class="container tt-shadow-big" data-token="<%=@token %>">
+			<div id="content-inner">
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function() {
+			var m = TinyTime.Manager({
+				components: {
+					newentry: TinyTime.NewEntry(),
+					entries: TinyTime.Entries()
+				}
+			}).init();
+		});
+	</script>
+</body>
+</html>

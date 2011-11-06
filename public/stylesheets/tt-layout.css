@@ -1,0 +1,33 @@
+.tt-shadow-big { box-shadow:0 4px 20px rgba(0, 0, 0, 0.4); }
+
+.tt-newentry { background-color:rgba(204, 221, 170, 0.7);padding:1em 1em 0;border:1px solid rgba(187, 204, 153, 0.6); }
+	.tt-newentry header { font-size:0.9em;font-weight:bold;text-transform:uppercase; }
+	.tt-newentry-workdate { line-height:30px; }
+		.tt-newentry-workdate-label { cursor:pointer; }
+		.tt-newentry-workdate input { display:none; }
+	.tt-newentry-fields { margin-top:2px; }
+		.tt-newentry-fields input { padding:6px; }
+
+.tt-entries { margin-top:1em; }
+
+	.tt-entry-group { margin-top:2em; }
+		.tt-entry-group table { margin-bottom:0; }
+		.tt-entry-group footer { display:inline-block;border-top:0;margin-top:8px;margin-left:4px;padding:4px 8px;padding-top:4px;background-color:#ccc;font-size:0.8em;font-weight:bold;color:#505050;
+			border-radius:4px; }
+
+	.tt-entry-time { color:#666;font-size:1.2em;font-weight:bold; }
+	.tt-entries .label { margin-top:-2px;margin-right:4px; }
+
+.tt-summary { position:absolute;top:-1px;left:100%;margin-left:1em;padding:1em;width:160px;border:1px solid #888;background-color:#f0f0f0; }
+	.tt-summary-time { padding-left:8px;font-weight:bold;color:#555; }
+	
+.container { width:780px; }
+
+html, body { background-color:#aaa;color:#333;font-size:14px; }
+
+#header { background-color:#444; }
+	#header h3 { color:#f0f0f0; }
+	
+#content { background-color:#f0f0f0;margin-top:60px;border:1px solid #888;position:relative; }
+
+	#content-inner { margin:2em; }

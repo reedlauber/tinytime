@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  instance_id: 
+  group_id: 
+  minutes: 
+  work_date: 2011-11-04
+  description: MyText
+  tags: MyText
+  paid: false
+
+two:
+  instance_id: 
+  group_id: 
+  minutes: 
+  work_date: 2011-11-04
+  description: MyText
+  tags: MyText
+  paid: false

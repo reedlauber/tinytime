@@ -1,0 +1,11 @@
+default: &DEFAULT
+  adapter: postgresql
+  encoding: utf8
+  min_messages: warning
+  database: tinytime_dev
+development:
+  <<: *DEFAULT
+  database: tinytime_dev
+test:
+  <<: *DEFAULT
+  database: tinytime_test
