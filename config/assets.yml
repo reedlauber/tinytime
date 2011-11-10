@@ -1,0 +1,20 @@
+embed_assets: on
+
+javascripts:
+    all:
+        - public/javascripts/vendor/jquery.min.js
+        - public/javascripts/vendor/date.js
+        - public/javascripts/vendor/mustache.js
+        - public/javascripts/vendor/bootstrap-modal.js
+        - public/javascripts/tt-core.js
+        - public/javascripts/tt-util.js
+        - public/javascripts/tt-data.js
+        - public/javascripts/tt-manager.js
+        - public/javascripts/tt-title.js
+        - public/javascripts/tt-newentry.js
+        - public/javascripts/tt-entries.js
+
+stylesheets:
+    all:
+        - public/stylesheets/vendor/bootstrap.min.css
+        - public/stylesheets/tt-layout.css

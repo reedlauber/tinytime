@@ -2,26 +2,35 @@
 <html>
 <head>
 	<title>TinyTime | Drive-by time-tracking</title>
-	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" />
-	<%= stylesheet_link_tag :all %>
-	<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', 'date', 'mustache', 'tt-core', 'tt-util', 'tt-data', 'tt-manager', 'tt-newentry', 'tt-entries' %>
+	<%= include_stylesheets :all, :media => "all" %>
 	<%= csrf_meta_tag %>
 </head>
 <body>
 	<div id="container">
 		<header id="header" class="topbar">
-			<h3 class="container">TinyTime</h3>
+			<div class="topbar-inner">
+				<div class="container">
+					<h3>TinyTime<span>alpha</span></h3>
+					<div class="tt-header-notice">Saving...</div>
+				</div>
+			</div>
 		</header>
-		<div id="content" class="container tt-shadow-big" data-token="<%=@token %>">
-			<div id="content-inner">
+		<div id="content" class="container" data-token="<%=@token %>">
+			<div id="content-inner" class="tt-shadow-big">
 				<%= yield %>
 			</div>
+			<aside id="summary" class="tt-summary tt-shadow">
+				<h3>Total Time</h3>
+				<div class="tt-summary-time"></div>
+			</aside>
 		</div>
 	</div>
+	<%= include_javascripts :all %>
 	<script>
 		$(function() {
 			var m = TinyTime.Manager({
 				components: {
+					title: TinyTime.Title(),
 					newentry: TinyTime.NewEntry(),
 					entries: TinyTime.Entries()
 				}

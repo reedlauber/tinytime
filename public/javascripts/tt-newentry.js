@@ -6,33 +6,44 @@
 				target: '#content',
 				fields: [
 					{ id:'newentry-time', prop:'minutes', required:true },
-					{ id:'newentry-desc', prop:'desc', required:true },
-					{ id:'newentry-tags', prop:'tags' }
+					{ id:'newentry-desc', prop:'desc', required:true, submit:true },
+					{ id:'newentry-tags', prop:'tags', submit:true }
 				]
 			}, options),
 			_manager;
 		
-		var _numRe = /^[\d\.]+$/g,
-			_dayRe = /[0-9\.]d/,
-			_hourRe = /[0-9\.]h/,
-			_minRe = /[0-9\.]m/;
+		var _numRe = /^[\d\.]+$/g,			   // e.g. "45"
+			_timeRe = /^[0-9]{1,2}:[0-9]{2}$/, // e.g. "02:15" or "2:15" = 2h 15m
+			_dayRe = /[0-9\.]d/,			   // e.g. "1d" = 1 day
+			_hourRe = /[0-9\.]h/,			   // e.g. "1h" = 1 hour
+			_minRe = /[0-9\.]m/;			   // e.g. "1m" = 1 minute
 		function _parseTime(val) {
-			var mins = 0.0;
+			var mins = 0.0,
+				parts,
+				h, m, d;
 			
 			// check if it's just a number
 			if(_numRe.test(val)) {
 				mins = Math.floor(parseFloat(val));
+			} else if(_timeRe.test(val)) {
+				parts = val.split(':');
+				h = parseInt(parts[0]);
+				m = parseInt(parts[1]);
+				if(!$.isNaN(h) && !$.isNaN(m)) {
+					mins += (h * 60);
+					mins += m;
+				}
 			} else {
-				var parts = val.split(' ');
+				parts = val.split(' ');
 				$.each(parts, function(i, part) {
 					if(_dayRe.test(part)) {
-						var d = parseFloat(part.replace('d', ''));
+						d = parseFloat(part.replace('d', ''));
 						mins += (d * 24 * 60);
 					} else if(_hourRe.test(part)) {
-						var h = parseFloat(part.replace('h', ''));
+						h = parseFloat(part.replace('h', ''));
 						mins += (h * 60);
 					} else if(_minRe.test(part)) {
-						var m = Math.floor(parseFloat(part.replace('m', '')));
+						m = Math.floor(parseFloat(part.replace('m', '')));
 						mins += m;
 					}
 				});
@@ -56,6 +67,7 @@
 			$('input', '#' + _options.id).val('');
 			$('.tt-newentry-workdate-label').html('Today');
 			$('#newentry-workdate input').val($('#newentry-workdate').attr('data-date'));
+			$('#' + _options.fields[0].id).focus();
 		}
 		
 		function _readForm() {
@@ -75,11 +87,23 @@
 			if(valid) {
 				entry.minutes = _parseTime(entry.minutes);
 		
-				TT.Data.save('/entries', entry, function(resp) {
+				TT.Data.save('/' + _manager.token + '/entries', entry, function(resp) {
 					_resetForm();
 					$(TT).trigger('entry-created', [resp]);
 				});
 			}
+		}
+		
+		function _setupForm() {
+			$.each(_options.fields, function(i, field) {
+				if(field.submit) {
+					$('#' + field.id).keyup(function(evt) {
+						if(evt.which === 13) {
+							$('#' + _options.id + '-btn').click();
+						}
+					});
+				}
+			});
 		}
 		
 		function _parseUserDate(val) {
