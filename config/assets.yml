@@ -1,4 +1,4 @@
-embed_assets: on
+package_assets: on
 
 javascripts:
     all:
