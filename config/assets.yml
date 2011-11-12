@@ -1,4 +1,4 @@
-package_assets: on
+package_assets: always
 
 javascripts:
     all:
@@ -9,10 +9,12 @@ javascripts:
         - public/javascripts/tt-core.js
         - public/javascripts/tt-util.js
         - public/javascripts/tt-data.js
+        - public/javascripts/tt-component.js
         - public/javascripts/tt-manager.js
         - public/javascripts/tt-title.js
         - public/javascripts/tt-newentry.js
         - public/javascripts/tt-entries.js
+        - public/javascripts/tt-timer.js
 
 stylesheets:
     all:

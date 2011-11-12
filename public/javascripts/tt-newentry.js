@@ -136,6 +136,7 @@
 				$(this).hide();
 				$('#newentry-workdate input').show();
 			});
+			
 			$('#newentry-workdate input').blur(function() {
 				var val = $(this).val();
 				var newDate = _parseUserDate(val);
@@ -146,6 +147,24 @@
 				
 				$(this).hide();
 				$label.show();
+			});
+			
+			$(TT).bind('timer-stopped', function(evt, seconds) {
+				var h = Math.floor(seconds / (60 * 60));
+				seconds -= h * 60 * 60;
+				var m = Math.round(seconds / 60);
+				var t = '';
+				if(h) {
+					t = h + 'h';
+				}
+				if(m) {
+					t += h ? ' ' : '';
+					t += m + 'm';
+				}
+				$('#' + _options.fields[0].id).val(t);
+				if(t) {
+					$('#' + _options.fields[1].id).focus();
+				}
 			});
 		}
 		
