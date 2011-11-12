@@ -10,16 +10,16 @@
 		<header id="header" class="topbar">
 			<div class="topbar-inner">
 				<div class="container">
-					<h3>TinyTime<span>alpha</span></h3>
+					<h3><a href="/">TinyTime<span>alpha</span></a></h3>
 					<div class="tt-header-notice">Saving...</div>
 				</div>
 			</div>
 		</header>
-		<div id="content" class="container" data-token="<%=@token %>">
+		<div id="content" class="container<%=(' tt-notfound' if (@notfound))%>" data-token="<%=@token %>">
 			<div id="content-inner" class="tt-shadow-big">
 				<%= yield %>
 			</div>
-			<aside id="summary" class="tt-summary tt-shadow">
+			<aside id="summary" class="tt-summary tt-shadow tt-requireinstance">
 				<h3>Total Time</h3>
 				<div class="tt-summary-time"></div>
 			</aside>

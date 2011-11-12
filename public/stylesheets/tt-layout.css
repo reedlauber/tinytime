@@ -35,13 +35,14 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 .tt-timer { position:absolute;top:8px;right:100%;z-index:1;padding:1em;width:64px;text-align:right;border:1px solid #888;border-right:0;background-color:#f0f0f0;border-radius:8px 0 0 8px; }
 	.tt-timer h5 { line-height:normal; }
 	.tt-timer-time { display:none;margin-top:1em;font-weight:bold;color:#777;letter-spacing:1px; }
-		.tt-timer-time-last { color:#888;font-size:0.8em; }
+		.tt-timer-time-last { display:none;color:#888;font-size:0.8em; }
 	.tt-timer-btns { display:none;margin-top:1em;white-space:nowrap;overflow:hidden; }
 		.tt-timer .info { margin-right:8px; }
 
 .tt-timer { -moz-transition:width 0.3s ease-out;-webkit-transition:width 0.3s ease-out;transition-property:width 0.3s ease-out; }
 .tt-timer:hover { width:140px; }
 	.tt-timer:hover .tt-timer-time { color:#444; }
+		.tt-timer:hover .tt-timer-time-last { display:inline; }
 	.tt-timer:hover .tt-timer-btns { display:block; }
 
 
@@ -51,6 +52,10 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 .tt-header-notice-saving { background-image:url(../images/ajax-loader.gif);background-repeat:no-repeat;background-position:8px center; }
 
 .container { width:780px; }
+
+/* Stuff that requires an Instance */
+.tt-notfound { background-color:#f00 !important; }
+.tt-notfound .tt-requireinstance { display:none; }
 
 /* Layout */
 html, body { background-color:#aaa;color:#333;font-size:14px; }

@@ -2,11 +2,15 @@ class EntriesController < ApplicationController
   def index
     instance = Instance.where("token = ?", params[:token]).first
     
-    if(instance != nil)
-      @entries = Entry.where("instance_id = ?", instance.id).order("work_date desc, id desc")
-      
-      render :json => @entries
+    resp = nil
+    
+    if(instance == nil)
+      resp = { :success => false, :message => "Couldn't find your instance." }
+    else
+      resp = Entry.where("instance_id = ?", instance.id).order("work_date desc, id desc")
     end
+    
+    render :json => resp
   end
   
   def create

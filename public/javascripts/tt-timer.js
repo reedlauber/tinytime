@@ -88,7 +88,7 @@
 		}
 		
 		_c.oninit = function() {
-			$timer = $('<div id="' + _c.options.id + '" class="tt-timer tt-shadow" />').appendTo(_c.options.target).append('<h5>Timer</h5>');
+			$timer = $('<div id="' + _c.options.id + '" class="tt-timer tt-shadow tt-requireinstance" />').appendTo(_c.options.target).append('<h5>Timer</h5>');
 			
 			$time = $('<div class="tt-timer-time">00</div>').appendTo($timer);
 			
