@@ -1,6 +1,8 @@
 Tinytime::Application.routes.draw do
   root :to => "home#index"
   
+  get "/about" => "content#about"
+  
   get "/:token" => "home#index"
   
   # Instances

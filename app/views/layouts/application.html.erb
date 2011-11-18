@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>TinyTime | Drive-by time-tracking</title>
-	<%= include_stylesheets :all, :media => "all" %>
+	<%= yield :css %>
 	<%= csrf_meta_tag %>
 </head>
 <body>
@@ -11,32 +11,20 @@
 			<div class="topbar-inner">
 				<div class="container">
 					<h3><a href="/">TinyTime<span>alpha</span></a></h3>
+					<ul class="nav">
+						<li<%=(' class=active' if @active_nav == "about")%>><a href="/about">About</a></li>
+					</ul>
 					<div class="tt-header-notice">Saving...</div>
 				</div>
 			</div>
 		</header>
-		<div id="content" class="container<%=(' tt-notfound' if (@notfound))%>" data-token="<%=@token %>">
+		<div id="content" class="container" data-token="<%=@token %>">
 			<div id="content-inner" class="tt-shadow-big">
 				<%= yield %>
 			</div>
-			<aside id="summary" class="tt-summary tt-shadow tt-requireinstance">
-				<h3>Total Time</h3>
-				<div class="tt-summary-time"></div>
-			</aside>
+			<%= yield :after %>
 		</div>
 	</div>
-	<%= include_javascripts :all %>
-	<script>
-		$(function() {
-			var m = TinyTime.Manager({
-				components: {
-					title: TinyTime.Title(),
-					newentry: TinyTime.NewEntry(),
-					entries: TinyTime.Entries(),
-					timer: TinyTime.Timer()
-				}
-			}).init();
-		});
-	</script>
+	<%= yield :js %>
 </body>
 </html>

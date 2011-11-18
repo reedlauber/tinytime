@@ -11,6 +11,8 @@ javascripts:
         - public/javascripts/tt-data.js
         - public/javascripts/tt-component.js
         - public/javascripts/tt-manager.js
+    
+    home:
         - public/javascripts/tt-title.js
         - public/javascripts/tt-newentry.js
         - public/javascripts/tt-entries.js
@@ -20,3 +22,6 @@ stylesheets:
     all:
         - public/stylesheets/vendor/bootstrap.min.css
         - public/stylesheets/tt-layout.css
+    
+    home:
+        - public/stylesheets/tt-home.css

@@ -1,3 +1,7 @@
+<% content_for :css do %>
+	<%= include_stylesheets :all, :home, :media => "all" %>
+<% end %>
+
 <div id="title">
 	<h2 id="title-label" class="tt-title-label"><%=@title %></h2>
 	<input type="text" id="title-input" class="tt-title-input span5" value="<%=@title %>">
@@ -36,3 +40,26 @@
 		<p>No entries added yet.</p>
 	</section>
 </div>
+
+<% content_for :after do %>
+<aside id="summary" class="tt-summary tt-shadow">
+	<h3>Total Time</h3>
+	<div class="tt-summary-time"></div>
+</aside>
+<% end %>
+
+<% content_for :js do %>
+	<%= include_javascripts :all, :home %>
+	<script>
+		$(function() {
+			var m = TinyTime.Manager({
+				components: {
+					title: TinyTime.Title(),
+					newentry: TinyTime.NewEntry(),
+					entries: TinyTime.Entries(),
+					timer: TinyTime.Timer()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

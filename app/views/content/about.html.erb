@@ -1,0 +1,27 @@
+<% content_for :css do %>
+	<%= include_stylesheets :all, :media => "all" %>
+<% end %>
+
+<div id="about">
+	<h2>About TinyTime</h2>
+	<p>TinyTime is an extremely light-weight time-tracking application. Its purpose is to provide a simple, easy, and cheap time-tracking option to individuals who aren't ready to invest in a more comprehensive solution.</p>
+	
+	<h3>How it works</h3>
+	<p>Each time you go to TinyTime a new timesheet is created for you. You can immediately start adding time to it. If you want to close your browser and come back to it at another time, just save (or bookmark) the URL.</p>
+	<p>You can rename your timesheet to something more meaningful by clicking on &quot;Untitled&quot; at the top.</p>
+	<p>If the time you're entering is not for today, click the <span class="tt-newentry-workdate-label label success">Today</span> text and enter a different date.</p>
+	<p>You can enter the amount of time you worked in one of two formats: &quot;hh:mm&quot; or &quot;1h 5m&quot;. &quot;90m&quot; or just &quot;90&quot; also works.</p>
+	<p>Finally, after adding a description, you can optionally a tag to &quot;type&quot; different types of work. Currently, only one tag per unit of work is supported.</p>
+	
+	<h3>The Timer</h3>
+	<p>You may also notice the timer to the left of the timesheet. This allow you to start a running clock when you start a task instead of having to enter the whole amount when you're done.</p>
+	<p>Simply start the timer and let it run. You can pause and restart it as many times as you need to. When you click &quot;Stop&quot;, the total length of time is transferred into the &quot;Time&quot; entry field, so you can add it to a new entry.</p>
+	
+	<h3>Upcoming Features</h3>
+	<p>User accounts, so you can bind a timesheet to yourself, if you prefer.</p>
+	<p>Date entry calendar picker</p>
+	<p>Recent timesheets (by cookie) list. In case you lose track of one.</p>
+	<p>More billing friendly layout.</p>
+	<p>Option to set entries as billable or not billable.</p>
+	<p>Handle multiple tags, and tag lookup auto-complete.</p>
+</div>
