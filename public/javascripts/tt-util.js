@@ -34,4 +34,35 @@
 			return minutes + 'm';
 		}
 	};
+	
+	TT.Util.groupEntries = function(entries, callback, addToday) {
+		var today = Date.today().toString(TT.dateFormat);
+		
+		var groups = [],
+			groupKeys = {};
+		
+		if(addToday) {
+			groups.push({ work_date:today, entries:[] });
+			groupKeys[today] = 0;
+		}
+	
+		$.each(entries, function(i, entry) {
+			var group, idx;
+			if(entry.work_date in groupKeys) {
+				idx = groupKeys[entry.work_date];
+				group = groups[idx];
+			} else {
+				idx = groups.length;
+				groupKeys[entry.work_date] = idx;
+				group = { work_date:entry.work_date, entries:[] };
+				groups.push(group);
+			}
+			
+			group.entries.push(entry);
+		});
+		
+		if(typeof callback === 'function') {
+			callback(groups, groupKeys);
+		}
+	};
 })(TinyTime);

@@ -13,20 +13,24 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 	.tt-newentry-fields { margin-top:2px; }
 		.tt-newentry-fields input { padding:6px; }
 
-/* Entries */
-.tt-entries { margin-top:1em; }
+/* Extras (Right Aside) */
+.tt-extras { position:absolute;top:0;left:100%;z-index:1; }
+	.tt-extras-section { margin:8px 0 16px;padding:1em;width:120px;border:1px solid #888;border-left:0;background-color:#f0f0f0;border-radius:0 8px 8px 0; }
 
-	.tt-entry-group { margin-top:2em; }
-		.tt-entry-group table { margin-bottom:0; }
-		.tt-entry-group footer { display:inline-block;border-top:0;margin-top:8px;margin-left:4px;padding:4px 8px;padding-top:4px;background-color:#ccc;font-size:0.8em;font-weight:bold;color:#505050;
-			border-radius:4px; }
-
-	.tt-entry-time { color:#666;font-size:1.2em;font-weight:bold; }
-	.tt-entries .label { margin-top:-2px;margin-right:4px; }
-
-/* Summary */
-.tt-summary { position:absolute;top:8px;left:100%;z-index:1;margin-left:0;padding:1em;width:120px;border:1px solid #888;border-left:0;background-color:#f0f0f0;border-radius:0 8px 8px 0; }
+/* Time Summary */
+.tt-summary { }
 	.tt-summary-time { padding-left:8px;font-weight:bold;color:#555; }
+
+/* Invoices */
+.tt-invoices { -moz-transition:width 0.3s ease-out;-webkit-transition:width 0.3s ease-out;transition-property:width 0.3s ease-out; }
+	.tt-invoices:hover { width:180px; }
+	.tt-invoices-list, .tt-invoices .btn { display:none; }
+	.tt-invoices:hover .btn { display:inline-block; }
+	.tt-invoices:hover .tt-invoices-list { display:block; }
+		.tt-invoices-list li { padding:4px; }
+		.tt-invoices-list li:hover { background-color:#e0e0e0; }
+			.tt-invoices-list a { color:#666;text-decoration:none; }
+			.tt-invoices-list li:hover a { color:#222; }
 
 /* Timer */
 .tt-timer { position:absolute;top:8px;right:100%;z-index:1;padding:1em;width:64px;text-align:right;border:1px solid #888;border-right:0;background-color:#f0f0f0;border-radius:8px 0 0 8px; }

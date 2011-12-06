@@ -1,0 +1,60 @@
+<% content_for :css do %>
+	<%= include_stylesheets :newinvoice, :media => "all" %>
+<% end %>
+
+<div id="newinvoice">
+	<h2>New Invoice</h2>
+	
+	<div class="tt-newinvoice-actions row">
+		<div class="tt-newinvoice-btns span8">
+			<button class="btn info disabled" rel="all">All Un-invoiced Time</button> 
+			<button class="btn disabled" rel="range">Date Range</button> 
+			<button class="btn disabled" rel="entries">Choose Entries</button>
+		</div>
+	
+		<div class="tt-newinvoice-create input">
+			<button id="newinvoice-create-btn" class="btn success disabled">Create Invoice</button>
+		</div>
+	</div>
+	
+	<div class="tt-newinvoice-summary row">
+		<div>
+			<span class="tt-newinvoice-total">Total <span>0h</span></span>
+			<span class="tt-newinvoice-summary-rate">
+				<span class="tt-newinvoice-separator">&times;</span>
+				<span class="input-prepend">
+					<span class="add-on">$</span>
+					<input type="text" id="newinvoice-rate" value="50" class="span1" /> 
+					<span class="suffix">/ hr</span>
+				</span>
+				<span class="tt-newinvoice-separator">=</span>
+				<span class="tt-newinvoice-price">$0.00</span>
+			</span>
+			<p><a class="tt-newinvoice-summary-includerate" href="javascript:void(0)">Include Rate</a></p>
+		</div>
+	</div>
+	
+	<div id="newinvoice-all" class="tt-newinvoice-section" rel="all">
+	</div>
+
+	<div id="newinvoice-range" class="tt-newinvoice-section" rel="range">
+		<div class="tt-newinvoice-total">Total <span>0h</span></div>
+	</div>
+	
+	<div id="newinvoice-entries" class="tt-newinvoice-section tt-entries" rel="entries">
+		Getting entries...
+	</div>
+</div>
+
+<% content_for :js do %>
+	<%= include_javascripts :newinvoice %>
+	<script>
+		$(function() {
+			var m = TinyTime.Manager({
+				components: {
+					newinvoice: TinyTime.NewInvoice()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

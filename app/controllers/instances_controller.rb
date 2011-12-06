@@ -1,6 +1,6 @@
 class InstancesController < ApplicationController
   def update
-    instance = Instance.where("token = ?", @token).first
+    instance = Instance.where("token = ?", params[:token]).first
     
     if(instance != nil)
       if(params[:name] != nil)

@@ -1,0 +1,7 @@
+.tt-entries-table { margin-bottom:8px; }
+
+.tt-invoice-total { float:right;width:99px;padding:8px 16px;white-space:nowrap;background-color:#ccc;color:#666;font-weight:bold;font-size:1.2em; }
+
+#invoice hgroup {  }
+	#invoice hgroup h2 { float:left; }
+	#invoice hgroup h3 { float:right; }

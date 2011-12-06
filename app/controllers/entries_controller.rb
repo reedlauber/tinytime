@@ -7,7 +7,11 @@ class EntriesController < ApplicationController
     if(instance == nil)
       resp = { :success => false, :message => "Couldn't find your instance." }
     else
-      resp = Entry.where("instance_id = ?", instance.id).order("work_date desc, id desc")
+      where = "instance_id = ?"
+      if(params[:paid] == "false")
+        where += " AND paid = false"
+      end
+      resp = Entry.where(where, instance.id).order("work_date desc, id desc")
     end
     
     render :json => resp

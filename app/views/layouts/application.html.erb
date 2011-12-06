@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>TinyTime | Drive-by time-tracking</title>
+	<%= include_stylesheets :all, :media => "all" %>
 	<%= yield :css %>
 	<%= csrf_meta_tag %>
 </head>
@@ -25,6 +26,7 @@
 			<%= yield :after %>
 		</div>
 	</div>
+	<%= include_javascripts :all %>
 	<%= yield :js %>
 </body>
 </html>

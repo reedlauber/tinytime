@@ -1,0 +1,31 @@
+<% content_for :css do %>
+	<%= include_stylesheets :invoice, :media => "all" %>
+<% end %>
+
+<div id="invoice" data-rank="<%=@invoice.rank %>">
+	<hgroup class="row">
+		<h2 class="span8">Invoice #<%=@invoice.rank %></h2>
+		<h3><%=(@instance.name || "Untitled Project") %></h3>
+	</hgroup>
+
+	<div id="invoice-entries" class="tt-entries">
+		Getting entries...
+	</div>
+	
+	<div class="row">
+		<div class="tt-invoice-total tt-corner-all-8">Total <span>0h</span></div>
+	</div>
+</div>
+
+<% content_for :js do %>
+	<%= include_javascripts :invoice %>
+	<script>
+		$(function() {
+			var m = TinyTime.Manager({
+				components: {
+					invoice: TinyTime.Invoice()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

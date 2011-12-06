@@ -1,0 +1,22 @@
+.tt-newinvoice-actions { margin-top:1em; }
+	.tt-newinvoice-btns { float:left; }
+	.tt-newinvoice-create { float:right; }
+		.tt-newinvoice-create .btn { margin-left:0.6em; }
+
+.tt-newinvoice-summary { margin-top:1em;text-align:right;font-size:1.2em;font-weight:bold;color:#888; }
+	.tt-newinvoice-summary-rate { display:none; }
+		.tt-newinvoice-separator { margin:0 1em; }
+		.tt-newinvoice-summary .input-prepend { display:inline-block; }
+		.tt-newinvoice-summary .suffix { font-size:0.9em; }
+		.tt-newinvoice-price { padding:4px 8px;border:1px solid #ccc;background-color:#d0d0d0;color:#666; }
+	.tt-newinvoice-summary-includerate { display:inline-block;margin-top:4px;font-size:0.9em; }
+
+.tt-newinvoice-section { display:none;margin-top:2em; }
+
+.tt-entries tr { cursor:pointer; }
+.tt-entries .selected { background-color:#ffe; }
+
+.tt-newinvoice-total { }
+	.tt-newinvoice-total span { color:#666; }
+
+#newinvoice-all { display:block; }

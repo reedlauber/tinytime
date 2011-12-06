@@ -1,0 +1,82 @@
+<% content_for :css do %>
+	<%= include_stylesheets :home, :media => "all" %>
+<% end %>
+
+<div id="title">
+	<h2 id="title-label" class="tt-title-label"><%=@title %></h2>
+	<input type="text" id="title-input" class="tt-title-input span5" value="<%=@title %>">
+</div>
+
+<form id="newentry" class="tt-newentry">
+	<header class="row">
+		<div class="span2">Day</div>
+		<div class="span2">Time</div>
+		<div class="span4">Description</div>
+		<div class="span2">Type</div>
+	</header>
+	<div class="row tt-newentry-fields">
+		<div id="newentry-workdate" class="tt-newentry-workdate span2" data-date="<%=Time.now.to_formatted_s(:simple_date) %>">
+			<span class="tt-newentry-workdate-label label success">Today</span>
+			<input type="text" class="span2" value="<%=Time.now.to_formatted_s(:simple_date) %>">
+		</div>
+		<div class="span2 clearfix">
+			<input type="text" id="newentry-time" class="span2" placeholder="2h 15m">
+		</div>
+		<div class="span4 clearfix">
+			<input type="text" id="newentry-desc" class="span4" placeholder="Redesigning icons... again.">
+		</div>
+		<div class="span2 clearfix">
+			<input type="text" id="newentry-tags" class="span2" placeholder="graphics">
+		</div>
+		<div class="span1">
+			<button id="newentry-btn" class="btn small primary">Add</button>
+		</div>
+	</div>
+</form>
+
+<div id="entries" class="tt-entries tt-entries-edit">
+	<section class="tt-entry-group">
+		<h2>Today</h2>
+		<p>No entries added yet.</p>
+	</section>
+</div>
+
+<% content_for :after do %>
+<aside id="extras" class="tt-extras">
+	<section id="summary" class="tt-extras-section tt-summary tt-shadow">
+		<h3>Total Time</h3>
+		<div class="tt-summary-time"></div>
+	</section>
+	
+	<section id="invoices" class="tt-extras-section tt-invoices tt-shadow">
+		<h3>Invoices</h3>
+		<% if(@invoices.count > 0) %>
+		<ul class="tt-invoices-list unstyled">
+			<% @invoices.each do |invoice| %>
+			<li>
+				<a href="/<%=@token %>/invoices/<%=invoice.rank %>"><%=invoice.title %></a>
+				<a href="javascript:void(0)" class="close" title="Delete Invoice">&times;</a>
+			</li>
+			<% end%>
+		</ul>
+		<% end %>
+		<a href="/<%=@token %>/invoices/new" class="btn primary small">Add</a>
+	</section>
+</aside>
+<% end %>
+
+<% content_for :js do %>
+	<%= include_javascripts :all, :home %>
+	<script>
+		$(function() {
+			var m = TinyTime.Manager({
+				components: {
+					title: TinyTime.Title(),
+					newentry: TinyTime.NewEntry(),
+					entries: TinyTime.Entries(),
+					timer: TinyTime.Timer()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

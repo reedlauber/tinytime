@@ -9,6 +9,7 @@
 			_groups = [],
 			_groupKeys = {},
 			_entries = [],
+			_uninvoicedMinutes = 0,
 			_totalMinutes = 0;
 		
 		var $entries,
@@ -20,7 +21,10 @@
 								'{{#tags}}<span class="label notice">{{tags}}</span>{{/tags}}',
 								'{{description}}',
 							'</td>',
-							'<td><a href="javascript:void(0)" class="close">&times;</a></td>',
+							'<td class="tt-entry-last">',
+								'{{#invoice_id}}<span class="label">Invoiced</span>{{/invoice_id}}',
+								'{{^invoice_id}}<a href="javascript:void(0)" class="tt-entry-del close">&times;</a>{{/invoice_id}}',
+							'</td>',
 						'</tr>'].join('');
 		var _groupTmpl = ['<section class="tt-entry-group" data-date="{{work_date}}">',
 							'<h2>{{label}}</h2>',
@@ -58,19 +62,24 @@
 		}
 		
 		function _updateGrandTotal() {
-			$('.tt-summary-time').html(TT.Util.relativeTime(_totalMinutes));
+			var totalHtml = TT.Util.relativeTime(_totalMinutes);
+			$('.tt-summary-time').html(totalHtml);
 		}
 		
 		function _renderGroups() {
 			$entries.empty();
 			_totalMinutes = 0;
+			_uninvoicedMinutes = 0;
 			$.each(_groups, function(i, group) {
 				group.minutes = 0;
 				$.each(group.entries, function(j, entry) {
 					entry.time = TT.Util.relativeTime(entry.minutes);
 					group.minutes += entry.minutes;
+					_totalMinutes += entry.minutes;
+					if(!entry.invoice_id) {
+						_uninvoicedMinutes += entry.minutes;
+					}
 				});
-				_totalMinutes += group.minutes;
 				
 				group.label = TT.Util.recentDateLabel(group.work_date, true);
 				group.total = TT.Util.relativeTime(group.minutes);
@@ -167,7 +176,7 @@
 						$footer = $('footer', $group);
 						
 					var rowHtml = TT.template(_rowTmpl, entry);
-					$(rowHtml).appendTo($table).hide().fadeIn();
+					$(rowHtml).prependTo($table).hide().fadeIn();
 					$footer.html(group.total);
 				} else {
 					_groupKeys[entry.work_date] = _groups.length;
@@ -192,9 +201,11 @@
 			
 			TT.Data.get('/' + _manager.token + '/entries', function(resp) {
 				_entries = resp;
-				
-				_groups = _groupEntries();
-				_renderGroups();
+				TT.Util.groupEntries(_entries, function(groups, groupKeys) {
+					_groups = groups;
+					_groupKeys = groupKeys;
+					_renderGroups();
+				}, true);
 			});
 			
 			_setupEvents();

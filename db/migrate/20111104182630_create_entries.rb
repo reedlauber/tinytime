@@ -2,7 +2,7 @@ class CreateEntries < ActiveRecord::Migration
   def self.up
     create_table :entries do |t|
       t.integer :instance_id
-      t.integer :group_id
+      t.integer :invoice_id
       t.integer :minutes
       t.date :work_date
       t.text :description

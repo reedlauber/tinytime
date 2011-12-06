@@ -12,16 +12,31 @@ javascripts:
         - public/javascripts/tt-component.js
         - public/javascripts/tt-manager.js
     
-    home:
-        - public/javascripts/tt-title.js
-        - public/javascripts/tt-newentry.js
-        - public/javascripts/tt-entries.js
-        - public/javascripts/tt-timer.js
+    home:    
+        - public/javascripts/widgets/tt-timer.js
+        - public/javascripts/components/tt-title.js
+        - public/javascripts/components/tt-newentry.js
+        - public/javascripts/components/tt-entries.js
+    
+    newinvoice:
+        - public/javascripts/widgets/tt-slider.js
+        - public/javascripts/components/tt-newinvoice.js
+    
+    invoice:
+        - public/javascripts/components/tt-invoice.js
 
 stylesheets:
     all:
         - public/stylesheets/vendor/bootstrap.min.css
+        - public/stylesheets/tt-core.css
         - public/stylesheets/tt-layout.css
+        - public/stylesheets/tt-widgets.css
     
     home:
         - public/stylesheets/tt-home.css
+    
+    newinvoice:
+        - public/stylesheets/tt-newinvoice.css
+    
+    invoice:
+        - public/stylesheets/tt-invoice.css

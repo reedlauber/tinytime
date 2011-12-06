@@ -4,7 +4,7 @@ class TokenController < ApplicationController
   def ensure_token
     if(params[:token] == nil)
       token = Instance.generate_unique_token!
-      redirect_to "/#{token}"
+      redirect_to "/#{token}/edit"
     end
     
     @token = params[:token]

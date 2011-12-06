@@ -10,11 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104182630) do
+ActiveRecord::Schema.define(:version => 20111124153043) do
 
   create_table "entries", :force => true do |t|
     t.integer  "instance_id"
-    t.integer  "group_id"
+    t.integer  "invoice_id"
     t.integer  "minutes"
     t.date     "work_date"
     t.text     "description"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(:version => 20111104182630) do
     t.string   "token"
     t.string   "password"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoices", :force => true do |t|
+    t.integer  "instance_id"
+    t.integer  "rank"
+    t.string   "title"
+    t.float    "rate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
