@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111124153043) do
+ActiveRecord::Schema.define(:version => 20111206042710) do
 
   create_table "entries", :force => true do |t|
     t.integer  "instance_id"
@@ -20,13 +20,6 @@ ActiveRecord::Schema.define(:version => 20111124153043) do
     t.text     "description"
     t.text     "tags"
     t.boolean  "paid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "groups", :force => true do |t|
-    t.integer  "instance_id"
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
