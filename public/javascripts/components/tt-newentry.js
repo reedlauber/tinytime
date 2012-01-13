@@ -17,6 +17,7 @@
 			_dayRe = /[0-9\.]d/,			   // e.g. "1d" = 1 day
 			_hourRe = /[0-9\.]h/,			   // e.g. "1h" = 1 hour
 			_minRe = /[0-9\.]m/;			   // e.g. "1m" = 1 minute
+			
 		function _parseTime(val) {
 			var mins = 0.0,
 				parts,
@@ -64,8 +65,7 @@
 		}	
 
 		function _resetForm() {
-			$('input', '#' + _options.id).val('');
-			$('.tt-newentry-workdate-label').html('Today');
+			$('#' + _options.id + '-time, #' + _options.id + '-desc').val('');
 			$('#newentry-workdate input').val($('#newentry-workdate').attr('data-date'));
 			$('#' + _options.fields[0].id).focus();
 		}

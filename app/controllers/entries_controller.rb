@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
       resp = { :success => false, :message => "Couldn't find your instance." }
     else
       where = "instance_id = ?"
-      if(params[:paid] == "false")
+      if(params[:paid] != "true")
         where += " AND paid = false"
       end
       resp = Entry.where(where, instance.id).order("work_date desc, id desc")

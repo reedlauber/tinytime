@@ -2,8 +2,10 @@
 	TT.Invoice = function() {
 		var _c = TT.Component({ id:'invoice' });
 		
-		var $total,
-			$entries;
+		var $invoice,
+				$entries,
+				$total,
+				$totalDue;
 		
 		var _entriesTmpl = ['<table class="tt-entries-table zebra-striped">',
 							'{{#entries}}',
@@ -19,6 +21,11 @@
 						  '</table>'].join('');
 		
 		function _processEntries(entries) {
+			var rate = parseFloat($invoice.attr('data-rate'));
+			if(isNaN(rate)) {
+				rate = 0.0;
+			}
+			
 			var groupLabel = '', minutes = 0;
 			$.each(entries, function(i, entry) {
 				var dateLabel = TT.Util.recentDateLabel(entry.work_date);
@@ -31,41 +38,30 @@
 				entry.time = TT.Util.relativeTime(entry.minutes);
 			});
 			
-			$total.html(TT.Util.relativeTime(minutes));
+			$total.html(TT.Util.relativeTime(minutes, 'long'));
+			
+			if(rate > 0.0) {
+				var totalDue = Math.round(minutes / 60) * rate;
+				$totalDue.html(TT.Util.formatMoney(totalDue, true));
+				$('.tt-invoice-totaldue-outer').show();
+			}
 		}
 		
 		function _renderEntries(entries) {
 			$entries.html(TT.template(_entriesTmpl, { entries:entries }));
-			
-			var total = 0;
-			$('tr', $entries).click(function() {
-				var checked = $('.tt-entry-choose input', this).attr('checked') === 'checked';
-				var minutes = parseInt($(this).attr('data-minutes'), 0);
-				if(checked) {
-					$('.tt-entry-choose input', this).removeAttr('checked');
-					total -= minutes;
-				} else {
-					$('.tt-entry-choose input', this).attr('checked', 'checked');
-					total += minutes;
-				}
-				$(this).toggleClass('selected');
-			});
-		}
-		
-		function _setupEvents() {
 		}
 		
 		_c.oninit = function() {
+			$invoice = $('#' + _c.options.id);
 			$total = $('.tt-invoice-total span');
+			$totalDue = $('.tt-invoice-totaldue span');
 			$entries = $('#' + _c.options.id + '-entries');
 			
-			var $invoice = $('#' + _c.options.id);
-			var rank = $invoice.attr('data-rank')
+			var rank = $invoice.attr('data-rank');
 			
 			TT.Data.get('/' + _c.manager.token + '/invoices/' + rank, function(resp) {
 				_processEntries(resp);
 				_renderEntries(resp);
-				_setupEvents();
 			});
 		};
 		

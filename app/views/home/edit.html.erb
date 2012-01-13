@@ -49,13 +49,15 @@
 	</section>
 	
 	<section id="invoices" class="tt-extras-section tt-invoices tt-shadow">
+		<% if(@invoices.count == 0) %>
 		<h3>Invoices</h3>
-		<% if(@invoices.count > 0) %>
+		<% else %>
+		<h3>Invoices <span class="tt-invoices-count">(<%=@invoices.count %>)</span></h3>
 		<ul class="tt-invoices-list unstyled">
 			<% @invoices.each do |invoice| %>
-			<li>
+			<li class="tt-corner-all">
 				<a href="/<%=@token %>/invoices/<%=invoice.rank %>"><%=invoice.title %></a>
-				<a href="javascript:void(0)" class="close" title="Delete Invoice">&times;</a>
+				<!--<a href="javascript:void(0)" class="close" title="Delete Invoice">&times;</a>-->
 			</li>
 			<% end%>
 		</ul>

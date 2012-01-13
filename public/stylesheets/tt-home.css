@@ -23,14 +23,15 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 
 /* Invoices */
 .tt-invoices { -moz-transition:width 0.3s ease-out;-webkit-transition:width 0.3s ease-out;transition-property:width 0.3s ease-out; }
+	.tt-invoices-count { font-size:0.7em;vertical-align:top; }
 	.tt-invoices:hover { width:180px; }
 	.tt-invoices-list, .tt-invoices .btn { display:none; }
 	.tt-invoices:hover .btn { display:inline-block; }
 	.tt-invoices:hover .tt-invoices-list { display:block; }
-		.tt-invoices-list li { padding:4px; }
-		.tt-invoices-list li:hover { background-color:#e0e0e0; }
+		.tt-invoices-list li { margin-bottom:4px;padding:6px 8px; }
+		.tt-invoices-list li:hover { background-color:#e0e0e0;box-shadow:inset 1px 1px 4px rgba(0, 0, 0, 0.3); }
 			.tt-invoices-list a { color:#666;text-decoration:none; }
-			.tt-invoices-list li:hover a { color:#222; }
+			.tt-invoices-list li:hover a { color:#111; }
 
 /* Timer */
 .tt-timer { position:absolute;top:8px;right:100%;z-index:1;padding:1em;width:64px;text-align:right;border:1px solid #888;border-right:0;background-color:#f0f0f0;border-radius:8px 0 0 8px; }

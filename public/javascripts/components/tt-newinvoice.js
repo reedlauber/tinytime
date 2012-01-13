@@ -93,7 +93,9 @@
 						entries: _entryIds[_selectedType]
 					};
 					TT.Data.save('/' + _c.manager.token + '/invoices', invoice, function(resp) {
-						window.location.href = '/' + _c.manager.token + '/invoices/' + resp.rank;
+						var invoiceUrl = '/' + _c.manager.token + '/invoices/' + resp.rank;
+						window.open(invoiceUrl);
+						window.location.href = '/' + _c.manager.token + '/edit';
 					});
 				}
 			});

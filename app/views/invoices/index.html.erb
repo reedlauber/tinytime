@@ -2,7 +2,7 @@
 	<%= include_stylesheets :invoice, :media => "all" %>
 <% end %>
 
-<div id="invoice" data-rank="<%=@invoice.rank %>">
+<div id="invoice" data-rank="<%=@invoice.rank %>" data-rate="<%=@invoice.rate %>">
 	<hgroup class="row">
 		<h2 class="span8">Invoice #<%=@invoice.rank %></h2>
 		<h3><%=(@instance.name || "Untitled Project") %></h3>
@@ -12,8 +12,11 @@
 		Getting entries...
 	</div>
 	
-	<div class="row">
-		<div class="tt-invoice-total tt-corner-all-8">Total <span>0h</span></div>
+	<div class="row tt-invoice-total-outer">
+		<span class="tt-invoice-total tt-corner-all-8">Total: <span>0h</span></span>
+	</div>
+	<div class="row tt-invoice-total-outer tt-invoice-totaldue-outer">
+		<span class="tt-invoice-totaldue tt-corner-all-8">Total Due: <span>$0.00</span></span>
 	</div>
 </div>
 
