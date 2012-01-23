@@ -15,6 +15,22 @@
 					<ul class="nav">
 						<li<%=(' class=active' if @active_nav == "about")%>><a href="/about">About</a></li>
 					</ul>
+					<ul class="nav secondary-nav">
+						<% if @user_instances != nil && @user_instances.count > 0 %>
+						<li class="dropdown" data-dropdown="dropdown">
+							<a href="javascript:void(0)" class="dropdown-toggle">My Projects (<%=@user_instances.count.to_s %>)</a>
+							<ul class="dropdown-menu">
+								<% @user_instances.each do |instance| %>
+								<li>
+									<a href="/<%="#{@username}/#{instance.slug}/#{instance.token}" %>">
+										<%=(instance.name == nil ? "Untitled - (" + instance.created_at.to_formatted_s(:simple_date) + ")" : instance.name) %>
+									</a>
+								</li>
+								<% end %>
+							</ul>
+						</li>
+						<% end %>
+					</ul>
 					<div class="tt-header-notice">Saving...</div>
 				</div>
 			</div>

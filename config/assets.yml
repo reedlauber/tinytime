@@ -5,6 +5,7 @@ javascripts:
         - public/javascripts/vendor/jquery.min.js
         - public/javascripts/vendor/date.js
         - public/javascripts/vendor/mustache.js
+        - public/javascripts/vendor/bootstrap-dropdown.js
         - public/javascripts/vendor/bootstrap-modal.js
         - public/javascripts/tt-core.js
         - public/javascripts/tt-util.js

@@ -1,3 +1,5 @@
+.dropdown-menu li { white-space:nowrap; }
+
 /* Title */
 .tt-title-label { display:inline-block;padding:0 8px;border:1px solid #f0f0f0; }
 	.tt-title-label:hover { background-color:rgba(255, 243, 176, 0.1);border-color:#ccc; }
