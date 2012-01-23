@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206042710) do
+ActiveRecord::Schema.define(:version => 20120123162211) do
 
   create_table "entries", :force => true do |t|
     t.integer  "instance_id"
@@ -30,7 +30,11 @@ ActiveRecord::Schema.define(:version => 20111206042710) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "slug"
   end
+
+  add_index "instances", ["slug"], :name => "index_instances_on_slug"
 
   create_table "invoices", :force => true do |t|
     t.integer  "instance_id"
@@ -40,5 +44,16 @@ ActiveRecord::Schema.define(:version => 20111206042710) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end

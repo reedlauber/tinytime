@@ -5,19 +5,19 @@ Tinytime::Application.routes.draw do
   get "/about" => "content#about"
   
   # Invoices
-  get "/:token/invoices/new" => "invoices#new"
-  get "/:token/invoices(/:rank)" => "invoices#index"
-  post "/:token/invoices" => "invoices#create"
-  
-  # Default
-  get "/:token/edit" => "home#edit"
-  get "/:token" => "home#index"
-  
-  # Instances
-  post "/:token" => "instances#update"
+  get "/:username/:slug/invoices/:rank" => "invoices#index"
+  get "/:username/:slug/:token/invoices/new" => "invoices#new"
+  post "/:username/:slug/invoices" => "invoices#create"
   
   # Entries
-  post "/:token/entries" => "entries#create"
-  get "/:token/entries" => "entries#index"
-  delete "/:token/entries/:id" => "entries#destroy"
+  get "/:username/:slug/entries" => "entries#index"
+  post "/:username/:slug/entries" => "entries#create"
+  delete "/:username/:slug/entries/:id" => "entries#destroy"
+  
+  # Default
+  get "/:username/:slug/:token" => "home#edit"
+  get "/:username(/:slug)" => "home#index"
+  
+  # Instances
+  post "/:username/:slug" => "instances#update"
 end

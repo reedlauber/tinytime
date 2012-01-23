@@ -19,7 +19,7 @@
 				</div>
 			</div>
 		</header>
-		<div id="content" class="container" data-token="<%=@token %>">
+		<div id="content" class="container" data-username="<%=@username %>" data-slug="<%=@slug %>" data-token="<%=@token if @editable %>">
 			<div id="content-inner" class="tt-shadow-big">
 				<%= yield %>
 			</div>

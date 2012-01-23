@@ -87,7 +87,7 @@
 			if(valid) {
 				entry.minutes = _parseTime(entry.minutes);
 		
-				TT.Data.save('/' + _manager.token + '/entries', entry, function(resp) {
+				TT.Data.save('/entries', entry, function(resp) {
 					_resetForm();
 					$(TT).trigger('entry-created', [resp]);
 				});

@@ -12,7 +12,6 @@
 							'<tr data-minutes="{{minutes}}">',
 								'<td class="tt-entry-grouplabel span3">{{group}}</td>',
 								'<td class="tt-entry-desc">',
-									//'{{#tags}}<span class="label notice">{{tags}}</span>{{/tags}}',
 									'{{description}}',
 								'</td>',
 								'<td class="tt-entry-time span2">{{time}}</td>',
@@ -59,7 +58,7 @@
 			
 			var rank = $invoice.attr('data-rank');
 			
-			TT.Data.get('/' + _c.manager.token + '/invoices/' + rank, function(resp) {
+			TT.Data.get('/invoices/' + rank, function(resp) {
 				_processEntries(resp);
 				_renderEntries(resp);
 			});

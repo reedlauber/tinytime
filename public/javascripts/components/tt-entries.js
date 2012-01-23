@@ -152,7 +152,7 @@
 					var entry = _entries[entryIdx];
 					
 					if(entry) {
-						TT.Data.del('/' + _manager.token + '/entries/' + id, function(resp) {
+						TT.Data.del('/entries/' + id, { token:_manager.token }, function(resp) {
 							if(resp.success) {
 								_removeEntry($row, entry, entryIdx);
 							} else {
@@ -199,7 +199,7 @@
 			$entries = $('#' + _options.id, _options.target);
 			$summary = $('#summary', _options.target);
 			
-			TT.Data.get('/' + _manager.token + '/entries', function(resp) {
+			TT.Data.get('/entries', function(resp) {
 				_entries = resp;
 				TT.Util.groupEntries(_entries, function(groups, groupKeys) {
 					_groups = groups;

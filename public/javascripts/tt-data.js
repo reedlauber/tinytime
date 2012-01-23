@@ -1,5 +1,7 @@
 (function(TT) {
-	TT.Data = {};
+	TT.Data = {
+		prefix: ''
+	};
 	
 	var _d = {};
 	
@@ -42,6 +44,8 @@
 			_d.showNotice();
 		}
 
+		url = TT.Data.prefix + url;
+
         var ajaxOpts = $.extend({
             url: url,
             type: method,
@@ -71,7 +75,12 @@
 		_d.ajax(path, 'POST', data, success, error, null, true);
 	};
 	
-	TT.Data.del = function(path, success, error) {
-		_d.ajax(path, 'DELETE', {}, success, error, null, true);
+	TT.Data.del = function(path, data, success, error) {
+		if(typeof data == 'function') {
+			error = success
+			success = data
+			data = {}
+		}
+		_d.ajax(path, 'DELETE', data, success, error, null, true);
 	};
 })(TinyTime);

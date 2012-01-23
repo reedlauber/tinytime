@@ -1,7 +1,5 @@
 class HomeController < TokenController
   def index
-    @instance = Instance.where("token = ?", @token).first
-    
     if(@instance != nil)
       @title = @instance.name || "Untitled"
     else
@@ -10,14 +8,14 @@ class HomeController < TokenController
   end
   
   def edit
-    @instance = Instance.where("token = ?", @token).first
-    
-    if(@instance != nil)
+    if(@instance == nil)
+      render "notfound"
+    elsif (@instance.token != params[:token])
+      render "index"
+    else
       @title = @instance.name || "Untitled"
       
       @invoices = Invoice.where("instance_id = ?", @instance.id)
-    else
-      render "notfound"
     end
   end
 end

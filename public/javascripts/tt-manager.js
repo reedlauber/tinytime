@@ -6,8 +6,14 @@
 				components: {}
 			}, options);
 		
+		var $container;
+
 		_self.init = function() {
-			_self.token = $(_options.target).attr('data-token');
+			$container = $(_options.target);
+			_self.username = $container.attr('data-username');
+			_self.slug = $container.attr('data-slug');
+			_self.token = $container.attr('data-token');
+			TT.Data.prefix = '/' + _self.username + '/' + _self.slug;
 			
 			$.each(_options.components, function(n, c) {
 				c.init(_self);

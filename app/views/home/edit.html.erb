@@ -56,13 +56,13 @@
 		<ul class="tt-invoices-list unstyled">
 			<% @invoices.each do |invoice| %>
 			<li class="tt-corner-all">
-				<a href="/<%=@token %>/invoices/<%=invoice.rank %>"><%=invoice.title %></a>
+				<a href="/<%="#{@username}/#{@slug}/invoices/#{invoice.rank}" %>" target="_blank"><%=invoice.title %></a>
 				<!--<a href="javascript:void(0)" class="close" title="Delete Invoice">&times;</a>-->
 			</li>
 			<% end%>
 		</ul>
 		<% end %>
-		<a href="/<%=@token %>/invoices/new" class="btn primary small">Add</a>
+		<a href="/<%="#{@username}/#{@slug}/#{@token}" %>/invoices/new" class="btn primary small">Add</a>
 	</section>
 </aside>
 <% end %>

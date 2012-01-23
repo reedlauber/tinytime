@@ -16,9 +16,10 @@
 				val = 'Untitled';
 			}
 			if(val != $title.text()) {
-				TT.Data.save('/' + _manager.token, { name:val }, function() {
+				TT.Data.save('', { token:_manager.token, name:val }, function(resp) {
 					$title.text(val);
 					callback();
+					window.location.href = '/' + _manager.username + '/' + resp.slug + '/' + _manager.token;
 				}, function() {
 					callback();
 				});

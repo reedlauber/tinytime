@@ -1,7 +1,5 @@
 class InvoicesController < TokenController
   def index
-    @instance = Instance.where("token = ?", params[:token]).first
-    
     if(@instance == nil)
       render "home/notfound"
     else
@@ -21,17 +19,18 @@ class InvoicesController < TokenController
   end
   
   def new
+    if(@instance != nil && @instance.token != params[:token])
+      render "notallowed"
+    end
   end
   
   def create
-    instance = Instance.where("token = ?", params[:token]).first
-    
-    if(instance == nil)
+    if(@instance == nil)
       render :json => { :success => false, :message => "Could not find instance." }
     else
       invoice = Invoice.new
-      invoice.instance_id = instance.id
-      invoice.rank = Invoice.where("instance_id = ?", instance.id).count + 1
+      invoice.instance_id = @instance.id
+      invoice.rank = Invoice.where("instance_id = ?", @instance.id).count + 1
       invoice.title = params[:title]
       invoice.rate = params[:rate].to_f
       invoice.save
