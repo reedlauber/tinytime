@@ -11,14 +11,22 @@
 		<header id="header" class="topbar">
 			<div class="topbar-inner">
 				<div class="container">
-					<h3><a href="/">TinyTime<span>alpha</span></a></h3>
+					<h3><a href="/">TinyTime<span>beta</span></a></h3>
 					<ul class="nav">
 						<li<%=(' class=active' if @active_nav == "about")%>><a href="/about">About</a></li>
+						<% if (@user != nil) %>
+						<li><a href="<%="/#{@user.username}" %>">New Project</a></li>
+						<% end %>
 					</ul>
 					<ul class="nav secondary-nav">
-						<% if @user_instances != nil && @user_instances.count > 0 %>
+						<% if(@logged_in) %>
+						<li><a href="/logout">Log Out</a></li>
+						<% else %>
+						<li><a href="/signup">Sign Up</a></li>
+						<% end %>
+						<% if (@user_instances != nil && @user_instances.count > 0) %>
 						<li class="dropdown" data-dropdown="dropdown">
-							<a href="javascript:void(0)" class="dropdown-toggle">My Projects (<%=@user_instances.count.to_s %>)</a>
+							<a href="javascript:void(0)" class="dropdown-toggle">Recent Projects</a>
 							<ul class="dropdown-menu">
 								<% @user_instances.each do |instance| %>
 								<li>

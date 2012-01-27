@@ -1,0 +1,38 @@
+<div id="signup">
+	<h2>Sign Up</h2>
+
+	<div class="form-stacked">
+		<fieldset>
+			<ul class="unstyled inputs-list">
+				<li>
+					<label for="username">Username</label>
+					<input type="text" id="username" />
+				</li>
+				<li>
+					<label for="email">Email Address</label>
+					<input type="text" id="email" />
+				</li>
+				<li>
+					<label for="password">Password</label>
+					<input type="password" id="password" />
+				</li>
+			</ul>
+			<div class="actions">
+				<button id="signup-btn" class="btn primary">Sign Up</button>
+			</div>
+		</fieldset>
+	</div>
+</div>
+
+<% content_for :js do %>
+	<%= include_javascripts :signup %>
+	<script>
+		$(function() {
+			TinyTime.Manager({
+				components: {
+					signup: TinyTime.SignUp()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

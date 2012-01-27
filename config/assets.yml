@@ -10,6 +10,7 @@ javascripts:
         - public/javascripts/tt-core.js
         - public/javascripts/tt-util.js
         - public/javascripts/tt-data.js
+        - public/javascripts/tt-form.js
         - public/javascripts/tt-component.js
         - public/javascripts/tt-manager.js
     
@@ -18,6 +19,9 @@ javascripts:
         - public/javascripts/components/tt-title.js
         - public/javascripts/components/tt-newentry.js
         - public/javascripts/components/tt-entries.js
+
+    signup:
+        - public/javascripts/components/tt-signup.js
     
     newinvoice:
         - public/javascripts/widgets/tt-slider.js

@@ -19,25 +19,30 @@ class TokenController < ApplicationController
   end
 
   def initialize_controller
-    @username = cookies[:username]
     @slug = ""
     @token = ""
     @editable = false
-    
-    # read previous user from cookie
-    if (@username != nil)
-      @user = User.where("username = ?", @username).first
-      
-      if (@user != nil)
-        @user_instances = Instance.where("user_id = ?", @user.id).order("updated_at DESC")
+
+    if (@logged_in_user == nil)
+      # read previous user from cookie
+      @username = cookies[:username]
+      if (@username != nil)
+        @user = User.where("username = ?", @username).first      
       end
     end
 
     # process user and instance info from GET params
-    if(params[:username] == nil)
+    if (params[:username] == nil)
     	# if there's no username param, check if there was a saved cookie value
     	if(@user != nil)
-    		redirect_to "/#{@username}"
+        # get recent projects
+        @user_instances = Instance.where("user_id = ?", @user.id).order("updated_at DESC").limit(10)
+        if(@user_instances.count > 0)
+          last_instance = @user_instances[0]
+          redirect_to "/#{@username}/#{last_instance.slug}/#{last_instance.token}"
+        else
+      		redirect_to "/#{@username}"
+        end
     	else
     		# if no saved cookie, create a new user, and instance and go there
     		provision_user
@@ -68,6 +73,8 @@ class TokenController < ApplicationController
       		@slug = @instance.slug
       		@token = @instance.token
           @editable = @token == params[:token]
+          # get recent projects
+          @user_instances = Instance.where("user_id = ?", @user.id).order("updated_at DESC").limit(10)
         end
     	end
     end

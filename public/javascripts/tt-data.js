@@ -36,7 +36,7 @@
                 error.call(TT.Data, errEvt);
             }
             if (errEvt.message && status !== 'abort') {
-                $(TT).trigger('message', [resp.message || 'Something bad happened with your request.', { error: true}]);
+                $(TT).trigger('message', [resp.message || 'Something bad happened with your request.', { style:'error' }]);
             }
         }
 
@@ -72,7 +72,7 @@
 	};
 	
 	TT.Data.save = function(path, data, success, error) {
-		_d.ajax(path, 'POST', data, success, error, null, true);
+		_d.ajax(path, data.id ? 'POST' : 'PUT', data, success, error, null, true);
 	};
 	
 	TT.Data.del = function(path, data, success, error) {

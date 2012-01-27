@@ -3,6 +3,13 @@ Tinytime::Application.routes.draw do
   
   # Content
   get "/about" => "content#about"
+
+  # Sign Up
+  get "/signup" => "sign_up#index"
+
+  # User Resource
+  put "/account" => "user#create"
+  post "/account/:username" => "user#update"
   
   # Invoices
   get "/:username/:slug/invoices/:rank" => "invoices#index"
