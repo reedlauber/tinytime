@@ -1,5 +1,5 @@
 <% content_for :css do %>
-	<%= include_stylesheets :all, :home, :media => "all" %>
+	<%= stylesheet_link_tag "tt-home" %>
 <% end %>
 
 <h2 id="title-label"><%=@title %></h2>
@@ -12,10 +12,10 @@
 </div>
 
 <% content_for :js do %>
-	<%= include_javascripts :home %>
+	<%= javascript_include_tag "components/tt-home" %>
 	<script>
 		$(function() {
-			var m = TinyTime.Manager({
+			TinyTime.Manager({
 				components: {
 					entries: TinyTime.Entries()
 				}

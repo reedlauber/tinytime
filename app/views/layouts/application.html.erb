@@ -2,11 +2,11 @@
 <html>
 <head>
 	<title>TinyTime | Drive-by time-tracking</title>
-	<%= include_stylesheets :all, :media => "all" %>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="<%= asset_path 'tt-logo-32.png' %>" />
+	<%= stylesheet_link_tag "tinytime" %>
 	<%= yield :css %>
-	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" href="/images/tt-logo-32.png" />
 	<%= csrf_meta_tag %>
 </head>
 <body>
@@ -54,7 +54,7 @@
 			<%= yield :after %>
 		</div>
 	</div>
-	<%= include_javascripts :all %>
+	<%= javascript_include_tag "tinytime" %>
 	<%= yield :js %>
 </body>
 </html>

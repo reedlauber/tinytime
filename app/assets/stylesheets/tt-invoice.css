@@ -1,3 +1,7 @@
+/*
+*= require_self
+*/
+
 .tt-entries-table { margin-bottom:8px; }
 
 .tt-invoice-total-outer { text-align:right; }

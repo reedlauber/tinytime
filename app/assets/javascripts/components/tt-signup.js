@@ -1,3 +1,5 @@
+// require_self
+
 (function(TT) {
 	TT.SignUp = function(options) {
 		var _c = TT.Component({ id:'signup' }, options);

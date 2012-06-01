@@ -1,3 +1,7 @@
+/*
+*= require_self
+*/
+
 .tt-newinvoice-actions { margin-top:1em; }
 	.tt-newinvoice-btns { float:left; }
 	.tt-newinvoice-create { float:right; }

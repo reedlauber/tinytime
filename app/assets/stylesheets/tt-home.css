@@ -1,3 +1,7 @@
+/*
+*= require_self
+*/
+
 .dropdown-menu li { white-space:nowrap; }
 
 .tt-expand { -moz-transition:width 0.3s ease-out;-webkit-transition:width 0.3s ease-out;transition-property:width 0.3s ease-out; }

@@ -21,7 +21,7 @@
 </div>
 
 <% content_for :js do %>
-	<%= include_javascripts :login %>
+	<%= javascript_include_tag "components/tt-login" %>
 	<script>
 		$(function() {
 			TinyTime.Manager({
