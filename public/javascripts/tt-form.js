@@ -42,7 +42,7 @@
 			var $field = field.$field || $('#' + field.id, context);
 			field.$field = $field;
 			if($field.length) {
-				data[field.prop] = $field.val();
+				data[field.prop || field.id] = $field.val();
 			}
 		});
 		return data;

@@ -1,3 +1,4 @@
+require "csv"
 class EntriesController < ApplicationController
   def index
     user = User.where("username = ?", params[:username]).first
@@ -17,7 +18,7 @@ class EntriesController < ApplicationController
         resp = Entry.where(where, instance.id).order("work_date desc, id desc")
       end
     end
-    
+
     render :json => resp
   end
   

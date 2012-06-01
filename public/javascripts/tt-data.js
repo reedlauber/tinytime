@@ -70,9 +70,13 @@
 	TT.Data.get = function(path, success, error) {
 		_d.ajax(path, 'GET', {}, success, error);
 	};
+
+	TT.Data.add = function(path, data, success, error) {
+		_d.ajax(path, 'PUT', data, success, error, null, true);
+	};
 	
 	TT.Data.save = function(path, data, success, error) {
-		_d.ajax(path, data.id ? 'POST' : 'PUT', data, success, error, null, true);
+		_d.ajax(path, 'POST', data, success, error, null, true);
 	};
 	
 	TT.Data.del = function(path, data, success, error) {

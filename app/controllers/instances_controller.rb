@@ -23,4 +23,33 @@ class InstancesController < ApplicationController
     
     render :json => resp
   end
+
+  def export
+    user = User.where("username = ?", params[:username]).first
+
+    if(user == nil)
+      resp = { :success => false, :message => "Couldn't find user." }
+    else
+      instance = Instance.where("slug = ? AND token = ? AND user_id = ?", params[:slug], params[:token], user.id).first
+      
+      if(instance == nil)
+        resp = { :success => false, :message => "Couldn't find your instance." }
+      else
+        where = "instance_id = ?"
+        if(params[:paid] != "true")
+          where += " AND paid = false"
+        end
+        resp = Entry.where(where, instance.id).order("work_date desc, id desc")
+      end
+    end
+
+    csv_string = CSV.generate do |csv|
+      csv << ["minutes", "work_date", "description", "tags", "paid"]
+      resp.each do |entry|
+        csv << [entry[:minutes], entry[:work_date], entry[:description], entry[:tags], entry[:paid]]
+      end
+    end
+    export_date = Time.now.to_formatted_s(:simple_date)
+    send_data csv_string, :filename => "tinytime-#{params[:slug]}-export-#{export_date}.csv", :type => "text/csv"
+  end
 end

@@ -22,6 +22,9 @@ javascripts:
 
     signup:
         - public/javascripts/components/tt-signup.js
+
+    login:
+        - public/javascripts/components/tt-login.js
     
     newinvoice:
         - public/javascripts/widgets/tt-slider.js

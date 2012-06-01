@@ -4,6 +4,9 @@
 	<title>TinyTime | Drive-by time-tracking</title>
 	<%= include_stylesheets :all, :media => "all" %>
 	<%= yield :css %>
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/images/tt-logo-32.png" />
 	<%= csrf_meta_tag %>
 </head>
 <body>
@@ -23,6 +26,7 @@
 						<li><a href="/logout">Log Out</a></li>
 						<% else %>
 						<li><a href="/signup">Sign Up</a></li>
+						<li><a href="/login">Log In</a></li>
 						<% end %>
 						<% if (@user_instances != nil && @user_instances.count > 0) %>
 						<li class="dropdown" data-dropdown="dropdown">

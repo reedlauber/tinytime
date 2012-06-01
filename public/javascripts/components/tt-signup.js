@@ -13,7 +13,7 @@
 				],
 				onSubmit: function(data) {
 					TT.Data.prefix = '';
-					TT.Data.save('/account', data, function(resp) {
+					TT.Data.add('/account', data, function(resp) {
 						window.location.href = '/' + resp.username;
 					});
 				}

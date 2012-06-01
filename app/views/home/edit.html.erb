@@ -48,12 +48,12 @@
 		<div class="tt-summary-time"></div>
 	</section>
 	
-	<section id="invoices" class="tt-extras-section tt-invoices tt-shadow">
+	<section id="invoices" class="tt-shadow tt-extras-section tt-expand tt-invoices">
 		<% if(@invoices.count == 0) %>
 		<h3>Invoices</h3>
 		<% else %>
 		<h3>Invoices <span class="tt-invoices-count">(<%=@invoices.count %>)</span></h3>
-		<ul class="tt-invoices-list unstyled">
+		<ul class="unstyled tt-expand-reveal tt-invoices-list">
 			<% @invoices.each do |invoice| %>
 			<li class="tt-corner-all">
 				<a href="/<%="#{@username}/#{@slug}/invoices/#{invoice.rank}" %>" target="_blank"><%=invoice.title %></a>
@@ -62,7 +62,14 @@
 			<% end%>
 		</ul>
 		<% end %>
-		<a href="/<%="#{@username}/#{@slug}/#{@token}" %>/invoices/new" class="btn primary small">Add</a>
+		<a href="/<%="#{@username}/#{@slug}/#{@token}" %>/invoices/new" class="btn primary small tt-expand-reveal-inline">Add</a>
+	</section>
+
+	<section id="export" class="tt-shadow tt-extras-section tt-expand tt-export">
+		<h3>Export</h3>
+		<form action="/<%="#{@username}/#{@slug}/#{@token}" %>/export" method="GET" class="tt-expand-reveal">
+			<input id="export-btn" type="submit" class="btn primary small" value="Export Entries" />
+		</form>
 	</section>
 </aside>
 <% end %>

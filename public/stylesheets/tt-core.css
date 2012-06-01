@@ -26,3 +26,8 @@
 
 /* Validation Messages */
 .tt-form-msg { position:fixed;top:40px;left:0;right:0;margin:0 auto;width:480px;z-index:2; }
+
+/* Bootstrap Overrides */
+.nav { font-size:0.9em; }
+.form-stacked { padding-left:0; }
+	.form-stacked label { margin-left:0; }

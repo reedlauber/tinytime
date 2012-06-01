@@ -77,7 +77,7 @@
 			});
 			
 			$stop.click(function() {
-				$time.html('<span class="tt-timer-time-last">last</span> ' + $time.html());
+				$time.html('<span class="tt-expand-reveal-inline tt-timer-time-last">last</span> ' + $time.html());
 				$start.show();
 				$pause.hide().text('Pause');
 				$stop.hide();
@@ -88,11 +88,11 @@
 		}
 		
 		_c.oninit = function() {
-			$timer = $('<div id="' + _c.options.id + '" class="tt-timer tt-shadow tt-requireinstance" />').appendTo(_c.options.target).append('<h5>Timer</h5>');
+			$timer = $('<div id="' + _c.options.id + '" class="tt-shadow tt-expand tt-timer tt-requireinstance" />').appendTo(_c.options.target).append('<h5>Timer</h5>');
 			
 			$time = $('<div class="tt-timer-time">00</div>').appendTo($timer);
 			
-			$btns = $('<div class="tt-timer-btns" />').appendTo($timer);
+			$btns = $('<div class="tt-expand-reveal tt-timer-btns" />').appendTo($timer);
 			$start = $('<span class="btn success">Start</span>').appendTo($btns);
 			$pause = $('<span class="btn info">Pause</span>').appendTo($btns).hide();
 			$stop = $('<span class="btn danger">Stop</span>').appendTo($btns).hide();

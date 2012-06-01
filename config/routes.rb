@@ -7,9 +7,16 @@ Tinytime::Application.routes.draw do
   # Sign Up
   get "/signup" => "sign_up#index"
 
+  # Log In
+  get "/login" => "log_in#index"
+  post "/login" => "log_in#login"
+
   # User Resource
   put "/account" => "user#create"
   post "/account/:username" => "user#update"
+
+  # Export
+  get "/:username/:slug/:token/export" => "instances#export"
   
   # Invoices
   get "/:username/:slug/invoices/:rank" => "invoices#index"
@@ -18,7 +25,7 @@ Tinytime::Application.routes.draw do
   
   # Entries
   get "/:username/:slug/entries" => "entries#index"
-  post "/:username/:slug/entries" => "entries#create"
+  put "/:username/:slug/entries" => "entries#create"
   delete "/:username/:slug/entries/:id" => "entries#destroy"
   
   # Default

@@ -1,5 +1,10 @@
 .dropdown-menu li { white-space:nowrap; }
 
+.tt-expand { -moz-transition:width 0.3s ease-out;-webkit-transition:width 0.3s ease-out;transition-property:width 0.3s ease-out; }
+	.tt-expand-reveal, .tt-expand-reveal-inline { display:none; }
+	.tt-expand:hover .tt-expand-reveal { display:block; }
+	.tt-expand:hover .tt-expand-reveal-inline { display:inline-block; }
+
 /* Title */
 .tt-title-label { display:inline-block;padding:0 8px;border:1px solid #f0f0f0; }
 	.tt-title-label:hover { background-color:rgba(255, 243, 176, 0.1);border-color:#ccc; }
@@ -24,16 +29,18 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 	.tt-summary-time { padding-left:8px;font-weight:bold;color:#555; }
 
 /* Invoices */
-.tt-invoices { -moz-transition:width 0.3s ease-out;-webkit-transition:width 0.3s ease-out;transition-property:width 0.3s ease-out; }
-	.tt-invoices-count { font-size:0.7em;vertical-align:top; }
+.tt-invoices { }
 	.tt-invoices:hover { width:180px; }
-	.tt-invoices-list, .tt-invoices .btn { display:none; }
-	.tt-invoices:hover .btn { display:inline-block; }
-	.tt-invoices:hover .tt-invoices-list { display:block; }
+	.tt-invoices-count { font-size:0.7em;vertical-align:top; }
 		.tt-invoices-list li { margin-bottom:4px;padding:6px 8px; }
 		.tt-invoices-list li:hover { background-color:#e0e0e0;box-shadow:inset 1px 1px 4px rgba(0, 0, 0, 0.3); }
 			.tt-invoices-list a { color:#666;text-decoration:none; }
 			.tt-invoices-list li:hover a { color:#111; }
+
+/* Export */
+.tt-export { }
+	.tt-export:hover { width:180px; }
+	.tt-export form { margin:0; }
 
 /* Timer */
 .tt-timer { position:absolute;top:8px;right:100%;z-index:1;padding:1em;width:64px;text-align:right;border:1px solid #888;border-right:0;background-color:#f0f0f0;border-radius:8px 0 0 8px; }
@@ -43,8 +50,6 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 	.tt-timer-btns { display:none;margin-top:1em;white-space:nowrap;overflow:hidden; }
 		.tt-timer .info { margin-right:8px; }
 
-.tt-timer { -moz-transition:width 0.3s ease-out;-webkit-transition:width 0.3s ease-out;transition-property:width 0.3s ease-out; }
+.tt-timer { }
 .tt-timer:hover { width:140px; }
 	.tt-timer:hover .tt-timer-time { color:#444; }
-		.tt-timer:hover .tt-timer-time-last { display:inline; }
-	.tt-timer:hover .tt-timer-btns { display:block; }
