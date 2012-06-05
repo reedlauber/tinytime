@@ -1,0 +1,2 @@
+// require_self
+(function(a){a.LogIn=function(b){var c=a.Component({id:"login"},b);return c.oninit=function(){a.Form({context:"#"+c.options.id,fields:[{id:"username",label:"Username",required:!0},{id:"password",label:"Password",required:!0}],submit:"#"+c.options.id+"-btn",onSubmit:function(b){a.Data.prefix="",a.Data.save("/login",b,function(a){window.location.href="/"})}})},c.pub}})(TinyTime);
