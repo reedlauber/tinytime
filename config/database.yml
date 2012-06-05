@@ -9,3 +9,6 @@ development:
 test:
   <<: *DEFAULT
   database: tinytime_test
+production:
+  <<: *DEFAULT
+  database: tinytime_prod
