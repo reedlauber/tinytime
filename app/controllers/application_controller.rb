@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
 
   def check_login
   	@logged_in_user = session[:user]
-  	@logged_in = @user != nil
+  	@logged_in = @logged_in_user != nil
+    
   	if(@logged_in_user != nil)
   		@logged_in_user.accessed_at = Time.now
   		@logged_in_user.save

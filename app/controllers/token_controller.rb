@@ -1,4 +1,4 @@
-class TokenController < ApplicationController
+  class TokenController < ApplicationController
   before_filter :initialize_controller
   
   private
@@ -29,13 +29,16 @@ class TokenController < ApplicationController
       if (@username != nil)
         @user = User.where("username = ?", @username).first      
       end
+    else
+      @user = @logged_in_user
+      @username = @logged_in_user.username
     end
 
     # process user and instance info from GET params
     if (params[:username] == nil)
-    	# if there's no username param, check if there was a saved cookie value
+    	# If there's no username param, check if there was a logged in user or saved cookie value
     	if(@user != nil)
-        # get recent projects
+        # Get recent projects
         @user_instances = Instance.where("user_id = ?", @user.id).order("updated_at DESC").limit(10)
         if(@user_instances.count > 0)
           last_instance = @user_instances[0]
@@ -44,22 +47,26 @@ class TokenController < ApplicationController
       		redirect_to "/#{@username}"
         end
     	else
-    		# if no saved cookie, create a new user, and instance and go there
+    		# If no saved cookie, create a new user, and instance and go there
     		provision_user
     		provision_instance @user.id
     		@username = @user.username
     		redirect_to "/#{@username}/#{@instance.slug}/#{@instance.token}"
     	end
     else
-    	# we have a username param. check if it's valid
-    	@username = params[:username]
-    	@user = User.where("username = ?", @username).first
+    	# We have a username param. check if it's valid
+      if(@username == nil)
+      	@username = params[:username]
+      end
+      if(@user == nil)
+      	@user = User.where("username = ?", @username).first
+      end
 
     	if(@user == nil)
-    		# didn't find user. bad request
+    		# A specific user was given, but not found. bad request
     		render "home/notfound"
     	elsif(params[:slug] == nil)
-    		# found a user, but no instance specified. create a new instance and go there
+    		# Found a user, but no instance specified. create a new instance and go there
     		provision_instance @user.id
     		redirect_to "/#{@user.username}/#{@instance.slug}/#{@instance.token}"
     	else
@@ -67,7 +74,7 @@ class TokenController < ApplicationController
     		@username = @user.username
     		@instance = Instance.where("slug = ?", params[:slug]).first
     		if(@instance == nil)
-    			# specified instance is not valid. bad request
+    			# Specified instance is not valid. bad request
     			render "home/notfound"
     		else
       		@slug = @instance.slug

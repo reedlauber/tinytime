@@ -37,7 +37,6 @@ class UserController < ApplicationController
 			user.email = params[:email]
 			user.password = params[:password]
 			user.save
-			user.password = nil
 			session[:user] = user;
 			render :json => user
 		end

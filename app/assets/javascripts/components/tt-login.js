@@ -14,7 +14,7 @@
 				submit: '#' + _c.options.id + '-btn',
 				onSubmit: function(data) {
 					TT.Data.prefix = '';
-					TT.Data.save('/login', data, function(resp) {
+					TT.Data.post('/login', data, function(resp) {
 						window.location.href = '/';
 					});
 				}

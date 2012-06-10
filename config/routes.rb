@@ -11,6 +11,9 @@ Tinytime::Application.routes.draw do
   get "/login" => "log_in#index"
   post "/login" => "log_in#login"
 
+  # Log Out
+  get "/logout" => "logout#index"
+
   # User Resource
   put "/account" => "user#create"
   post "/account/:username" => "user#update"

@@ -75,6 +75,10 @@
 		_d.ajax(path, 'PUT', data, success, error, null, true);
 	};
 	
+	TT.Data.post = function(path, data, success, error) {
+		_d.ajax(path, 'POST', data, success, error, null);
+	};
+	
 	TT.Data.save = function(path, data, success, error) {
 		_d.ajax(path, 'POST', data, success, error, null, true);
 	};
