@@ -7,17 +7,23 @@ class UserController < ApplicationController
 			resp[:message] = "Username is required."
 		elsif (params[:email] == nil)
 			valid = false
-			resp[:message] = "email is required."
+			resp[:message] = "Email is required."
 		elsif (params[:password] == nil)
 			valid = false
 			resp[:message] = "Password is required."
 		end
 
 		if (valid)
-			duplicate = User.where("username = ? OR email = ?", params[:username], params[:email]).count > 0
+			duplicate = User.where("username = ?", params[:username]).count > 0
 			if (duplicate)
 				valid = false
-				resp[:message] = "That username or email is already taken."
+				resp[:message] = "That username is already taken."
+			end
+
+			duplicate = User.where("email = ?", params[:email]).count > 0
+			if (duplicate)
+				valid = false
+				resp[:message] = "An account with that email address already exists."
 			end
 		end
 
@@ -37,7 +43,8 @@ class UserController < ApplicationController
 			user.email = params[:email]
 			user.password = params[:password]
 			user.save
-			session[:user] = user;
+			session[:user] = user
+			cookies.delete(:username)
 			render :json => user
 		end
 	end

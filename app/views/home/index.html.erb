@@ -2,24 +2,10 @@
 	<%= stylesheet_link_tag "tt-home" %>
 <% end %>
 
-<h2 id="title-label"><%=@title %></h2>
+<h2 id="title-label"><%=@username %></h2>
 
-<div id="entries" class="tt-entries">
-	<section class="tt-entry-group">
-		<h2>Today</h2>
-		<p>No entries added yet.</p>
-	</section>
+<div id="index" class="">
 </div>
 
 <% content_for :js do %>
-	<%= javascript_include_tag "components/tt-home" %>
-	<script>
-		$(function() {
-			TinyTime.Manager({
-				components: {
-					entries: TinyTime.Entries()
-				}
-			}).init();
-		});
-	</script>
 <% end %>

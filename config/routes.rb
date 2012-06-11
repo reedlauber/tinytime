@@ -33,7 +33,8 @@ Tinytime::Application.routes.draw do
   
   # Default
   get "/:username/:slug/:token" => "home#edit"
-  get "/:username(/:slug)" => "home#index"
+  get "/:username/:slug" => "home#timesheet"
+  get "/:username" => "home#index"
   
   # Instances
   post "/:username/:slug" => "instances#update"

@@ -18,7 +18,7 @@
 					<ul class="nav">
 						<li<%=(' class=active' if @active_nav == "about")%>><a href="/about">About</a></li>
 						<% if (@user != nil) %>
-						<li><a href="<%="/#{@user.username}" %>">New Project</a></li>
+						<li><a href="<%="/#{@user.username}/new" %>">New Project</a></li>
 						<% end %>
 					</ul>
 					<ul class="nav secondary-nav">
