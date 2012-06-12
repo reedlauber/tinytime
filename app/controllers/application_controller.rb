@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
   		@logged_in_user.save
   	end
   end
+
+  def require_admin
+    unless @logged_in
+      redirect_to "/login"
+    end
+  end
 end
