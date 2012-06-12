@@ -1,0 +1,64 @@
+/*
+ *= require vendor/bootstrap.min
+ *= require tt-core
+ *= require tt-layout
+ *= require_self
+ */
+
+/*
+	#aec7f8 = blue
+	#859e50 = dark green
+	#cdeb8e = light green
+	#b86a5c = brick red
+	#9e6358 = darker brick red
+*/
+
+[class^="icon-"],[class*=" icon-"] { background-image:url(<%=asset_path "glyphicons-halflings.png" %>); }
+.icon-white{ background-image:url(<%=asset_path "glyphicons-halflings-white.png" %>); }
+
+a { color:#9e6358; }
+
+.nav-list > .active > a, .nav-list > .active > a:hover { background-color:#859e50; }
+
+html, body { background-color:#4d4d4d; }
+#header .navbar-inner { background: #cdeb8e; /* Old browsers */
+	background: -moz-linear-gradient(top,  #cdeb8e 0%, #a5c956 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cdeb8e), color-stop(100%,#a5c956)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* IE10+ */
+	background: linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956',GradientType=0 ); /* IE6-9 */ }
+
+.navbar .brand { color:#1a1a1a;text-shadow:0 1px 0 rgba(255, 255, 255, 0.7); }
+
+#content { margin-top:60px; }
+	#content-inner { border:0;background-color:transparent; }
+
+		#admin-nav { margin-bottom:20px;padding:1em 0;background-color:#f6f6f6; }
+		#admin-content { background-color:#f6f6f6; }
+
+			#admin h1 { color:#b86a5c;text-shadow:0 1px 0 rgba(0, 0, 0, 0.2); }
+			#admin h2 { margin-top:20px;color:#555;text-shadow:0 1px 0 rgba(0, 0, 0, 0.2); }
+
+
+/* Index */
+#admin-index-metrics { margin-top:40px; }
+.admin-index-metric { display:inline-block;margin-right:20px;background-color:#f0f0f0;text-align:center; }
+	.admin-index-metric strong { display:block;font-size:80px;line-height:60px; }
+	.admin-index-metric span { display:block;margin-top:8px; }
+
+/* Users */
+#admin-users-table { margin-top:40px; }
+	#admin-users-table.table tr.signedup td { background-color:#dff0d8; }
+	#admin-users-table thead tr th:first-child { width:30px; }
+	#admin-users-table thead tr th:last-child { width:100px; }
+	#admin-users-table tr td:first-child, #admin-users-table tr td:last-child { text-align:center; }
+
+/* User */
+#admin-user h1 span { vertical-align:middle; }
+#admin-user p { color:#777;font-size:0.9em; }
+	#admin-user-instances { max-width:500px; }
+		#admin-user-instances li { padding:9px 0 0;border-top:1px solid #ddd; }
+		#admin-user-instances li:first-child { border-top:0; }
+			#admin-user-instances a { font-size:1.2em;font-weight:bold; }

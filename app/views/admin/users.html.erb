@@ -1,0 +1,37 @@
+<div id="admin-users">
+	<h1>TinyTime Accounts</h1>
+
+	<table id="admin-users-table" class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Username</th>
+				<th>Date Created</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% 
+				@i = 1 
+				@users.each do |user| 
+			%>
+			<tr<% if(user.password != nil) %> class="signedup"<% end %>>
+				<td><%=(@offset + @i) %>.</td>
+				<td><a href="/admin/users/<%=user.username %>"><%=user.username %></a></td>
+				<td><%=user.created_at.to_formatted_s(:simple_date) %></td>
+			</tr>
+			<% 
+				@i += 1
+				end 
+			%>
+		</tbody>
+	</table>
+	<div class="pagination">
+	    <ul>
+		    <li><a href="<%=@prev_page %>">&laquo;</a></li>
+		    <% @pages.each do |p| %>
+		    <li<% if(p * @page_size == @offset) %> class="active"<% end %>><a href="?offset=<%=(p * @page_size)%>"><%=(p+1) %></a></li>
+		    <% end %>
+		    <li><a href="<%=@next_page %>">&raquo;</a></li>
+	    </ul>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TinyTime Admin</title>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="<%= asset_path 'tt-logo-32.png' %>" />
+	<%= stylesheet_link_tag "admin" %>
+	<%= yield :css %>
+	<%= csrf_meta_tag %>
+</head>
+<body>
+	<div id="container">
+		<header id="header" class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a href="/" class="brand">TinyTime</a>
+					<ul class="nav"></ul>
+					<div class="tt-header-notice">Saving...</div>
+				</div>
+			</div>
+		</header>
+		<div id="content" class="container-fluid">
+			<div id="admin" class="row-fluid">
+				<nav id="admin-nav" class="span2 tt-corner-all-12 tt-shadow">
+					<ul class="nav nav-list">
+						<li class="nav-header">Menu</li>
+						<li<%=(@active == 'index' ? ' class=active' : '')%>><a href="/admin">Admin Home</a></li>
+						<li<%=(@active == 'users' ? ' class=active' : '')%>><a href="/admin/users">Users</a></li>
+						<li<%=(@active == 'instances' ? ' class=active' : '')%>><a href="/admin/projects">Projects</a></li>
+					</ul>
+				</nav>
+				<div id="admin-content" class="span10 tt-corner-all-12 tt-shadow">
+					<div id="content-inner">
+						<%= yield %>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<%= yield :js %>
+</body>
+</html>

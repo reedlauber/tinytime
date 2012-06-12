@@ -1,0 +1,18 @@
+<div id="admin-user">
+	<h1><%=@user.username %><%=(@user.password != nil ? ' <span class="icon-ok"></span>'.html_safe : '') %></h1>
+	<p>Account created: <%=@user.created_at.to_formatted_s(:simple_date) %></p>
+
+	<h2>Projects</h2>
+	<% if(@instances.count == 0) %>
+	<p>None</p>
+	<% else %>
+	<ul id="admin-user-instances" class="unstyled well">
+		<% @instances.each do |instance| %>
+		<li>
+			<a href="/"><%=(instance[:name] || "Untitled")%></a> <span class="label"><%=instance[:num_entries] %> entries</span>
+			<p>Created: <%=instance[:created_at].to_formatted_s(:simple_date) %></p>
+		</li>
+		<% end %>
+	</ul>
+	<% end %>
+</div>

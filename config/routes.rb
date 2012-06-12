@@ -18,6 +18,12 @@ Tinytime::Application.routes.draw do
   put "/account" => "user#create"
   post "/account/:username" => "user#update"
 
+  get "/admin" => "admin#index", as: :admin
+  namespace :admin do
+    resources :users
+    resources :projects
+  end
+
   # Export
   get "/:username/:slug/:token/export" => "instances#export"
   
