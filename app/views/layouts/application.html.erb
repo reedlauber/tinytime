@@ -11,17 +11,17 @@
 </head>
 <body>
 	<div id="container">
-		<header id="header" class="topbar">
-			<div class="topbar-inner">
+		<header id="header" class="navbar">
+			<div class="navbar-inner">
 				<div class="container">
-					<h3><a href="/">TinyTime<span>beta</span></a></h3>
+					<a href="/" class="brand">TinyTime<span>beta</span></a>
 					<ul class="nav">
 						<li<%=(' class=active' if @active_nav == "about")%>><a href="/about">About</a></li>
 						<% if (@user != nil) %>
 						<li><a href="<%="/#{@user.username}/new" %>">New Project</a></li>
 						<% end %>
 					</ul>
-					<ul class="nav secondary-nav">
+					<ul class="nav pull-right">
 						<% if(@logged_in) %>
 						<li><a href="/logout">Log Out</a></li>
 						<% else %>
@@ -30,7 +30,7 @@
 						<% end %>
 						<% if (@user_instances != nil && @user_instances.count > 0) %>
 						<li class="dropdown" data-dropdown="dropdown">
-							<a href="javascript:void(0)" class="dropdown-toggle">Recent Projects</a>
+							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Recent Projects <i class="caret"></i></a>
 							<ul class="dropdown-menu">
 								<% @user_instances.each do |instance| %>
 								<li>

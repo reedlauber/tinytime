@@ -1,28 +1,30 @@
 <div id="admin-users">
 	<h1>TinyTime Accounts</h1>
 
+	<a href="/admin/users/new" class="btn">Add Account <i class="icon-circle-arrow-right"></i></a>
+
 	<table id="admin-users-table" class="table table-bordered table-striped">
 		<thead>
 			<tr>
 				<th></th>
 				<th>Username</th>
+				<th>Projects</th>
 				<th>Date Created</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% 
-				@i = 1 
-				@users.each do |user| 
+				@i = 0
+				@users.each do |user|
+				@i += 1 
 			%>
-			<tr<% if(user.password != nil) %> class="signedup"<% end %>>
+			<tr<% if user[:claimed] %> class="signedup"<% end %>>
 				<td><%=(@offset + @i) %>.</td>
-				<td><a href="/admin/users/<%=user.username %>"><%=user.username %></a></td>
-				<td><%=user.created_at.to_formatted_s(:simple_date) %></td>
+				<td><a href="/admin/users/<%=user[:username] %>"><%=user[:username] %></a></td>
+				<td><%=user[:num_instances] %></td>
+				<td><%=user[:created_at].to_formatted_s(:simple_date) %></td>
 			</tr>
-			<% 
-				@i += 1
-				end 
-			%>
+			<% end %>
 		</tbody>
 	</table>
 	<div class="pagination">

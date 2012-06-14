@@ -25,7 +25,7 @@
 .tt-shadow { -moz-box-shadow:0 2px 4px rgba(0, 0, 0, 0.4);-webkit-box-shadow:0 2px 4px rgba(0, 0, 0, 0.4);box-shadow:0 2px 4px rgba(0, 0, 0, 0.4); }
 
 /* Validation Messages */
-.tt-form-msg { position:fixed;top:40px;left:0;right:0;margin:0 auto;width:480px;z-index:2; }
+.tt-form-msg { position:fixed;top:40px;left:0;right:0;margin:0 auto;width:480px;z-index:9999; }
 
 /* Bootstrap Overrides */
 .nav { font-size:0.9em; }

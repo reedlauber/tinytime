@@ -14,13 +14,13 @@ class UserController < ApplicationController
 		end
 
 		if (valid)
-			duplicate = User.where("username = ?", params[:username]).count > 0
-			if (duplicate)
+			unique = User.username_is_unique params[:username]
+			if (!unique)
 				valid = false
 				resp[:message] = "That username is already taken."
 			end
 
-			duplicate = User.where("email = ?", params[:email]).count > 0
+			unique = User.email_is_unique params[:email]
 			if (duplicate)
 				valid = false
 				resp[:message] = "An account with that email address already exists."

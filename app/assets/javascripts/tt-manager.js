@@ -10,7 +10,19 @@
 
 		function _setupEvents() {
 			$(TT).bind('message', function(evt, message, opts) {
-				var $msg = $('<div class="alert-message block-message tt-form-msg tt-shadow"></div>').html(message).appendTo('body').hide();
+				if(typeof message === 'object') {
+					var m = '<ul class="">';
+					$.each(message, function(p, v) {
+						if($.isArray(v)) {
+							m += '<li>' + v.join('</li><li>') + '</li>';
+						} else {
+							m += '<li>' + v + '</li>';
+						}
+					});
+					m += '</ul>';
+					message = m;
+				}
+				var $msg = $('<div class="alert alert-block tt-form-msg tt-shadow"></div>').html(message).appendTo('body').hide();
 				if(opts.style) {
 					$msg.addClass(opts.style)
 				}
@@ -29,7 +41,9 @@
 			_self.username = $container.attr('data-username');
 			_self.slug = $container.attr('data-slug');
 			_self.token = $container.attr('data-token');
-			TT.Data.prefix = '/' + _self.username + '/' + _self.slug;
+			if(_self.username && _self.slug) {
+				TT.Data.prefix = '/' + _self.username + '/' + _self.slug;
+			}
 
 			_setupEvents();
 			

@@ -39,6 +39,14 @@
 
 		</div>
 	</div>
+	<%= javascript_include_tag "tinytime" %>
+	<script>
+		$(function() {
+			$.ajaxSetup({ 
+				headers: { 'X-CSRF-Token': '<%= form_authenticity_token.to_s %>' }
+			});
+		});
+	</script>
 	<%= yield :js %>
 </body>
 </html>

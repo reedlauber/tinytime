@@ -1,0 +1,47 @@
+<div id="admin-users-new">
+	<% if @message != nil %>
+	<div class="alert-message"><%=@message %></div>
+	<% end %>
+
+	<h1>Add Account</h1>
+
+	<form class="form-horizontal well">
+		<ul class="unstyled">
+			<li class="control-group">
+				<label for="username" class="control-label">Username</label>
+				<div class="controls">
+					<input type="text" id="username" required />
+				</div>
+			</li>
+			<li class="control-group">
+				<label for="email" class="control-label">Email Address</label>
+				<div class="controls">
+					<input type="email" id="email" required />
+				</div>
+			</li>
+			<li class="control-group">
+				<label for="password" class="control-label">Password</label>
+				<div class="controls">
+					<input type="text" id="password" required />
+				</div>
+			</li>
+		</ul>
+		<div class="form-actions">
+			<button id="admin-users-new-btn" class="btn btn-primary">Create Account</button> 
+			<a href="/admin/users">Cancel</a>
+		</div>
+	</form>
+</div>
+
+<% content_for :js do %>
+	<%= javascript_include_tag "admin/add-user" %>
+	<script>
+		$(function() {
+			TinyTime.Manager({
+				components: {
+					addUser: TinyTime.AddUser()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

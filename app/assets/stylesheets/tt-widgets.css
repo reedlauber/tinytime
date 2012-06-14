@@ -13,6 +13,7 @@
 	
 	.tt-entry-del { display:none; }
 	.tt-entries-edit .tt-entry-del { display:inline; }
+		.tt-entry-del.close { line-height:14px; }
 
 /* Slider */
 .tt-slider { position:relative;width:400px;height:20px;z-index:1; }

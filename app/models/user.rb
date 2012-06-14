@@ -1,4 +1,23 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
+  attr_accessible :username, :email, :password
+  validates_presence_of :username, :email, :password
+  validates_uniqueness_of :username, :message => "That username is already taken."
+  validates_uniqueness_of :email, :message => "An account with that email address already exists."
+
+  has_many :instances
+  #include 'bcrypt'
+
+  #def password
+  #  @password ||= Password.new(password_hash)
+  #end
+
+  #def password=(new_password)
+  #  @password = Password.create(new_password)
+  #  self.password_hash = @password
+  #end
+
   @@adjs = ["big", "brave", "bright", "busy", "careful", "clever", "cool", "daring", "fair", "fierce", 
     "free", "fun", "fuzzy", "good", "green", "grey", "happy", "light", "long", "noisy", 
     "orange", "polite", "proud", "purple", "quiet", "red", "rich", "sharp", "silent", "strong", 
@@ -40,5 +59,13 @@ class User < ActiveRecord::Base
     end
   
     username
+  end
+
+  def self.username_is_unique username
+    User.where("username = ?", params[:username]).count == 0
+  end
+
+  def self.email_is_unique username
+    User.where("email = ?", params[:username]).count == 0
   end
 end

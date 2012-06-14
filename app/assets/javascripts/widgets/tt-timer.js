@@ -93,9 +93,9 @@
 			$time = $('<div class="tt-timer-time">00</div>').appendTo($timer);
 			
 			$btns = $('<div class="tt-expand-reveal tt-timer-btns" />').appendTo($timer);
-			$start = $('<span class="btn success">Start</span>').appendTo($btns);
-			$pause = $('<span class="btn info">Pause</span>').appendTo($btns).hide();
-			$stop = $('<span class="btn danger">Stop</span>').appendTo($btns).hide();
+			$start = $('<span class="btn btn-success">Start</span>').appendTo($btns);
+			$pause = $('<span class="btn btn-info">Pause</span>').appendTo($btns).hide();
+			$stop = $('<span class="btn btn-danger">Stop</span>').appendTo($btns).hide();
 			
 			_setupEvents();
 		};

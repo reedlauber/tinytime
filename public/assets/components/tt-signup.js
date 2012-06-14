@@ -1,2 +1,0 @@
-// require_self
-(function(a){a.SignUp=function(b){var c=a.Component({id:"signup"},b);return c.oninit=function(){a.Form({context:"#"+c.options.id,submit:"#"+c.options.id+"-btn",fields:[{id:"username",prop:"username",label:"Username",required:!0},{id:"email",prop:"email",label:"Email",required:!0},{id:"password",prop:"password",label:"Password",required:!0}],onSubmit:function(b){a.Data.prefix="",a.Data.add("/account",b,function(a){window.location.href="/"+a.username})}})},c.pub}})(TinyTime);

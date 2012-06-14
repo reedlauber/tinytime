@@ -32,7 +32,7 @@
 	};
 
 	TT.Form.showValidationMessage = function(messages) {
-		var msgs = '<ul class="unstyled"><li>' + messages.join('</li><li>') + '</li></ul>';
+		var msgs = '<ul><li>' + messages.join('</li><li>') + '</li></ul>';
 		$(TT).trigger('message', [msgs, { style:'error' }]);
 	};
 

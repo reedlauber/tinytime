@@ -18,7 +18,7 @@
 		var _rowTmpl = ['<tr data-id="{{id}}">',
 							'<td class="tt-entry-time span3">{{time}}</td>',
 							'<td class="tt-entry-desc">',
-								'{{#tags}}<span class="label notice">{{tags}}</span>{{/tags}}',
+								'{{#tags}}<span class="label label-info">{{tags}}</span>{{/tags}}',
 								'{{description}}',
 							'</td>',
 							'<td class="tt-entry-last">',
@@ -28,7 +28,7 @@
 						'</tr>'].join('');
 		var _groupTmpl = ['<section class="tt-entry-group" data-date="{{work_date}}">',
 							'<h2>{{label}}</h2>',
-							'<table class="tt-entries-table zebra-striped">',
+							'<table class="tt-entries-table table table-striped">',
 								'{{#entries}}',
 								_rowTmpl,
 								'{{/entries}}',

@@ -36,7 +36,7 @@
                 error.call(TT.Data, errEvt);
             }
             if (errEvt.message && status !== 'abort') {
-                $(TT).trigger('message', [resp.message || 'Something bad happened with your request.', { style:'error' }]);
+                $(TT).trigger('message', [resp.message || resp.errors || 'Something bad happened with your request.', { style:'error' }]);
             }
         }
 

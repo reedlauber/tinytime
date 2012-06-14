@@ -18,6 +18,7 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 /* New Entry */
 .tt-newentry { margin-top:1em;padding:1em 1em 0;border:1px solid rgba(187, 204, 153, 0.6);background-color:rgba(204, 221, 170, 0.7); }
 	.tt-newentry header { font-size:0.9em;font-weight:bold;text-transform:uppercase; }
+		.tt-newentry .row-fluid > [class*="span"] { min-height:0; }
 	.tt-newentry-workdate { line-height:30px; }
 		.tt-newentry-workdate-label { cursor:pointer; }
 		.tt-newentry-workdate input { display:none; }

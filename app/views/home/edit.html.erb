@@ -8,28 +8,28 @@
 </div>
 
 <form id="newentry" class="tt-newentry">
-	<header class="row">
+	<header class="row-fluid">
 		<div class="span2">Day</div>
 		<div class="span2">Time</div>
 		<div class="span4">Description</div>
 		<div class="span2">Type</div>
 	</header>
-	<div class="row tt-newentry-fields">
+	<div class="row-fluid tt-newentry-fields">
 		<div id="newentry-workdate" class="tt-newentry-workdate span2" data-date="<%=Time.now.to_formatted_s(:simple_date) %>">
-			<span class="tt-newentry-workdate-label label success">Today</span>
-			<input type="text" class="span2" value="<%=Time.now.to_formatted_s(:simple_date) %>">
+			<span class="tt-newentry-workdate-label label label-success">Today</span>
+			<input type="text" class="input-small" value="<%=Time.now.to_formatted_s(:simple_date) %>">
 		</div>
 		<div class="span2 clearfix">
-			<input type="text" id="newentry-time" class="span2" placeholder="2h 15m">
+			<input type="text" id="newentry-time" class="input-small" placeholder="2h 15m">
 		</div>
 		<div class="span4 clearfix">
-			<input type="text" id="newentry-desc" class="span4" placeholder="Redesigning icons... again.">
+			<input type="text" id="newentry-desc" class="input" placeholder="Redesigning icons... again.">
 		</div>
 		<div class="span2 clearfix">
-			<input type="text" id="newentry-tags" class="span2" placeholder="graphics">
+			<input type="text" id="newentry-tags" class="input-small" placeholder="graphics">
 		</div>
 		<div class="span1">
-			<button id="newentry-btn" class="btn small primary">Add</button>
+			<button id="newentry-btn" class="btn btn-small btn-primary">Add</button>
 		</div>
 	</div>
 </form>
@@ -62,13 +62,13 @@
 			<% end%>
 		</ul>
 		<% end %>
-		<a href="/<%="#{@username}/#{@slug}/#{@token}" %>/invoices/new" class="btn primary small tt-expand-reveal-inline">Add</a>
+		<a href="/<%="#{@username}/#{@slug}/#{@token}" %>/invoices/new" class="btn btn-primary btn-small tt-expand-reveal-inline">Add</a>
 	</section>
 
 	<section id="export" class="tt-shadow tt-extras-section tt-expand tt-export">
 		<h3>Export</h3>
 		<form action="/<%="#{@username}/#{@slug}/#{@token}" %>/export" method="GET" class="tt-expand-reveal">
-			<input id="export-btn" type="submit" class="btn primary small" value="Export Entries" />
+			<input id="export-btn" type="submit" class="btn btn-primary btn-small" value="Export Entries" />
 		</form>
 	</section>
 </aside>

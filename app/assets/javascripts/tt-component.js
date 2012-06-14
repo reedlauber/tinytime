@@ -1,5 +1,6 @@
 (function(TT) {
 	TT.Component = function(defaults, options) {
+		options = options || defaults;
 		var _c = {
 			options: $.extend({ target:'#content' }, defaults, options),
 			pub: {}
