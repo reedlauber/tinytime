@@ -1,9 +1,8 @@
 class Instance < ActiveRecord::Base
-  def self.generate_token
-    chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789'
-    token = ''
-    8.times { token << chars[rand(chars.size)] }
-    token
+  belongs_to :user
+
+  def num_entries
+    Entry.where("instance_id = ?", self.id).count
   end
   
   def self.generate_unique_token
@@ -25,5 +24,13 @@ class Instance < ActiveRecord::Base
     slug.downcase!
     
     self.slug = slug
+  end
+
+  private
+  def self.generate_token
+    chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+    token = ''
+    8.times { token << chars[rand(chars.size)] }
+    token
   end
 end

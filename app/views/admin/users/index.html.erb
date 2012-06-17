@@ -1,5 +1,7 @@
 <div id="admin-users">
-	<h1>TinyTime Accounts</h1>
+	<header class="admin-header">
+		<h1>TinyTime Accounts</h1>
+	</header>
 
 	<a href="/admin/users/new" class="btn">Add Account <i class="icon-circle-arrow-right"></i></a>
 
@@ -18,22 +20,14 @@
 				@users.each do |user|
 				@i += 1 
 			%>
-			<tr<% if user[:claimed] %> class="signedup"<% end %>>
+			<tr<%=' class=signedup' if user.claimed? %>>
 				<td><%=(@offset + @i) %>.</td>
-				<td><a href="/admin/users/<%=user[:username] %>"><%=user[:username] %></a></td>
-				<td><%=user[:num_instances] %></td>
-				<td><%=user[:created_at].to_formatted_s(:simple_date) %></td>
+				<td><a href="<%=admin_user_url(user) %>"><%=user.username %></a></td>
+				<td><span class="label"><%=user.num_instances %></span></td>
+				<td><%=user.created_at.to_formatted_s(:simple_date) %></td>
 			</tr>
 			<% end %>
 		</tbody>
 	</table>
-	<div class="pagination">
-	    <ul>
-		    <li><a href="<%=@prev_page %>">&laquo;</a></li>
-		    <% @pages.each do |p| %>
-		    <li<% if(p * @page_size == @offset) %> class="active"<% end %>><a href="?offset=<%=(p * @page_size)%>"><%=(p+1) %></a></li>
-		    <% end %>
-		    <li><a href="<%=@next_page %>">&raquo;</a></li>
-	    </ul>
-    </div>
+	<%= paginate @users %>
 </div>

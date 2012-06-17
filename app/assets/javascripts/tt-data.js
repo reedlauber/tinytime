@@ -84,7 +84,7 @@
 	};
 	
 	TT.Data.del = function(path, data, success, error) {
-		if(typeof data == 'function') {
+		if(typeof data === 'function') {
 			error = success
 			success = data
 			data = {}

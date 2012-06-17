@@ -1,0 +1,40 @@
+<div id="admin-instance-new" data-user-id="<%=@user.id %>">
+	<header class="admin-header">
+		<h1>Add New Project</h1>
+	</header>
+
+	<form class="well">
+		<ul class="unstyled">
+			<li class="control-group">
+				<label for="name" class="control-label">Project Name</label>
+				<div class="controls">
+					<input type="text" id="name" class="input-xlarge" />
+				</div>
+			</li>
+			<li class="control-group">
+				<label for="entries" class="control-label">Entries</label>
+				<span class="help-block">CSV of entries in the format: &quot;minutes,work_date(yyyy-MM-dd),description,tags,is_paid(t|f)&quot;</span>
+				<div class="controls">
+					<textarea id="entries" class="input-xlarge"></textarea>
+				</div>
+			</li>
+		</ul>
+		<div class="form-actions">
+			<button id="admin-instance-new-btn" class="btn btn-primary">Add Instance</button>
+			<a href="<%=admin_user_url(@user) %>">Cancel</a>
+		</div>
+	</form>
+</div>
+
+<% content_for :js do %>
+	<%= javascript_include_tag "admin/add-instance" %>
+	<script>
+		$(function() {
+			TinyTime.Manager({
+				components: {
+					addInstance: TinyTime.AddInstance()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

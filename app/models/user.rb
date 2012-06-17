@@ -7,6 +7,15 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :message => "An account with that email address already exists."
 
   has_many :instances
+
+  def num_instances
+    Instance.where("user_id = ?", self.id).count
+  end
+
+  def claimed?
+    self.password != nil
+  end
+
   #include 'bcrypt'
 
   #def password

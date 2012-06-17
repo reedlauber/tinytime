@@ -20,8 +20,9 @@ Tinytime::Application.routes.draw do
 
   get "/admin" => "admin#index", as: :admin
   namespace :admin do
-    resources :users
-    resources :projects
+    resources :users do
+      resources :instances
+    end
   end
 
   # Export

@@ -1,18 +1,42 @@
-<div id="admin-user">
-	<h1><%=@user.username %><%=(@user.password != nil ? ' <span class="icon-ok"></span>'.html_safe : '') %></h1>
-	<p>Account created: <%=@user.created_at.to_formatted_s(:simple_date) %></p>
+<div id="admin-user" data-id="<%=@user.id %>">
+	<header class="admin-header">
+		<h1><%=@user.username %><%=(@user.password != nil ? ' <span class="icon-ok"></span>'.html_safe : '') %></h1>
+		<span>Account created: <%=@user.created_at.to_formatted_s(:simple_date) %></span>
+	</header>
 
-	<h2>Projects</h2>
-	<% if(@instances.count == 0) %>
-	<p>None</p>
-	<% else %>
-	<ul id="admin-user-instances" class="unstyled well">
-		<% @instances.each do |instance| %>
-		<li>
-			<a href="/"><%=(instance[:name] || "Untitled")%></a> <span class="label"><%=instance[:num_entries] %> entries</span>
-			<p>Created: <%=instance[:created_at].to_formatted_s(:simple_date) %></p>
-		</li>
+	<section id="admin-user-instances">
+		<header class="row-fluid">
+			<h2>Projects</h2>
+			<a id="admin-user-instances-add" href="<%=new_admin_user_instance_url(@user) %>" class="btn">Add Project <i class="icon-circle-arrow-right"></i></a>
+		</header>
+		<% if(@instances.count == 0) %>
+		<p>None</p>
+		<% else %>
+		<ul class="unstyled well">
+			<% @instances.each do |instance| %>
+			<% num_entries = instance.num_entries %>
+			<li data-id="<%=instance.id %>">
+				<a href="<%=admin_user_instance_url(@user, instance) %>"><%=(instance.name || "Untitled")%></a> <span class="label"><%=num_entries %> entries</span>
+				<p>Created: <%=instance.created_at.to_formatted_s(:simple_date) %></p>
+				<% if num_entries == 0 %>
+				<span class="close">&times;</span>
+				<% end %>
+			</li>
+			<% end %>
+		</ul>
 		<% end %>
-	</ul>
-	<% end %>
+	</section>
 </div>
+
+<% content_for :js do %>
+	<%= javascript_include_tag "admin/user" %>
+	<script>
+		$(function() {
+			TinyTime.Manager({
+				components: {
+					user: TinyTime.User()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

@@ -41,8 +41,9 @@ html, body { background-color:#4d4d4d; }
 		#admin-nav { margin-bottom:20px;padding:1em 0;background-color:#f6f6f6; }
 		#admin-content { background-color:#f6f6f6; }
 
-			#admin h1 { margin-bottom:20px;color:#b86a5c;text-shadow:0 1px 0 rgba(0, 0, 0, 0.2); }
-			#admin h2 { margin-top:20px;color:#555;text-shadow:0 1px 0 rgba(0, 0, 0, 0.2); }
+			.admin-header { margin-bottom:20px; }
+			#admin h1 { color:#b86a5c;text-shadow:0 1px 0 rgba(0, 0, 0, 0.2); }
+			#admin h2 { color:#5a5a5a;text-shadow:0 1px 0 rgba(0, 0, 0, 0.2); }
 
 /* Index */
 #admin-index-metrics { margin-top:40px; }
@@ -59,8 +60,17 @@ html, body { background-color:#4d4d4d; }
 
 /* User */
 #admin-user h1 span { vertical-align:middle; }
-#admin-user p { color:#777;font-size:0.9em; }
-	#admin-user-instances { max-width:500px; }
-		#admin-user-instances li { padding:9px 0 0;border-top:1px solid #ddd; }
-		#admin-user-instances li:first-child { border-top:0; }
-			#admin-user-instances a { font-size:1.2em;font-weight:bold; }
+#admin-user p, #admin-user .admin-header span { color:#777;font-size:0.9em; }
+	#admin-user-instances { margin-top:22px;max-width:500px; }
+
+	#admin-user-instances h2 { float:left; }
+	#admin-user-instances-add { float:right; }
+
+		#admin-user-instances ul { margin-top:8px; }
+			#admin-user-instances li { padding:9px 0 0;border-top:1px solid #ddd;position:relative; }
+			#admin-user-instances li:first-child { border-top:0; }
+			#admin-user-instances li a { font-size:1.2em;font-weight:bold; }
+			#admin-user-instances li .close { display:none;position:absolute;top:0;right:0; }
+			#admin-user-instances li:hover .close { display:block; }
+
+/* New Project */
