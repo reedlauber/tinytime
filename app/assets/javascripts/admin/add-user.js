@@ -1,5 +1,3 @@
-// =require_self
-
 (function(TT) {
 	TT.AddUser = function(options) {
 		var _c = TT.Component({

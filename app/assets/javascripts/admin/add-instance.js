@@ -1,5 +1,3 @@
-// =require_self
-
 (function(TT) {
 	TT.AddInstance = TT.Component2({ 
 		id:'admin-instance-new', 

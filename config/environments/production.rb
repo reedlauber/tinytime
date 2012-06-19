@@ -56,5 +56,6 @@ Tinytime::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.assets.precompile += ['admin.css', 'tinytime.css', 'tt-home.css', 'tt-invoice.css', 'tt-newinvoice.css', 'tinytime.js', 'components/tt-home.js', 'components/tt-login.js', 'components/tt-signup.js']
+  config.assets.precompile += ['admin.css', 'tinytime.css', 'tt-home.css', 'tt-invoice.css', 'tt-newinvoice.css', 
+    'tinytime.js', 'admin/admin.js', 'components/tt-home.js', 'components/tt-login.js', 'components/tt-signup.js']
 end

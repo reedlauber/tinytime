@@ -1,5 +1,3 @@
-//=require_self
-
 (function(TT) {
 	TT.User = TT.Component2({
 		id: 'admin-user'

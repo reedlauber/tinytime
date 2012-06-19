@@ -1,5 +1,3 @@
-//=require_self
-
 (function(TT) {
 	TT.Instances = TT.Component2({
 		id: 'admin-projects'
