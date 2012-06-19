@@ -11,6 +11,9 @@ Tinytime::Application.routes.draw do
   get "/login" => "log_in#index"
   post "/login" => "log_in#login"
 
+  # Forgot
+  get "/forgot" => "forgot#index"
+
   # Log Out
   get "/logout" => "logout#index"
 

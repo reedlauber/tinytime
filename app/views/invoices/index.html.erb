@@ -21,10 +21,9 @@
 </div>
 
 <% content_for :js do %>
-	<%= include_javascripts :invoice %>
 	<script>
 		$(function() {
-			var m = TinyTime.Manager({
+			TinyTime.Manager({
 				components: {
 					invoice: TinyTime.Invoice()
 				}
