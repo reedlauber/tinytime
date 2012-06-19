@@ -6,7 +6,7 @@
   def provision_user
   	@user = User.new
   	@user.username = User.generate_unique_username
-  	@user.save
+  	@user.save(:validate => false)
   	cookies[:username] = { :value => @user.username, :expires => 1.year.from_now }
   end
 
