@@ -1,48 +1,22 @@
 class UserController < ApplicationController
 	def create
-		valid = true
-		resp = {}
-		if (params[:username] == nil)
-			valid = false
-			resp[:message] = "Username is required."
-		elsif (params[:email] == nil)
-			valid = false
-			resp[:message] = "Email is required."
-		elsif (params[:password] == nil)
-			valid = false
-			resp[:message] = "Password is required."
+		user = nil
+		if(cookies[:username] != nil)
+			user = User.where("username = ?", cookies[:username]).first
 		end
 
-		if (valid)
-			unique = User.username_is_unique params[:username]
-			if (!unique)
-				valid = false
-				resp[:message] = "That username is already taken."
-			end
-
-			unique = User.email_is_unique params[:email]
-			if (duplicate)
-				valid = false
-				resp[:message] = "An account with that email address already exists."
-			end
-		end
-
-		if (!valid)
-			resp[:success] = false
-			render :json => resp
+		if(user == nil)
+			user = User.create(user_params)
 		else
-			user = nil
-			if(cookies[:username] != nil)
-				user = User.where("username = ?", cookies[:username]).first
-			end
-
-			if(user == nil)
-				user = User.new
-			end
 			user.username = params[:username]
 			user.email = params[:email]
 			user.password = params[:password]
 			user.save
+		end
+
+		if !user.valid?
+			render :json => { :success => false, :errors => user.errors }
+		else
 			session[:user] = user
 			cookies.delete(:username)
 			render :json => user
@@ -50,5 +24,10 @@ class UserController < ApplicationController
 	end
 
 	def update
+	end
+
+	private
+	def user_params
+		params.permit(:username, :email, :password)
 	end
 end

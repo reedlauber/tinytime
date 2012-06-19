@@ -13,13 +13,12 @@ class LogInController < ApplicationController
 
 		user = User.where("username = ? OR email = ?", params[:username], params[:username]).first
 
-		if(user == nil)
-			valid = false
-			resp[:message] = "Sorry, couldn't find your account.";
-		else
-			user[:password] = nil
+		if user && user.password_digest? && user.authenticate(params[:password])
 			resp = user
 			session[:user] = user
+		else
+			valid = false
+			resp[:message] = "Sorry, login was not successful.";
 		end
 
 		if(!valid)

@@ -16,7 +16,7 @@
 				onSubmit: function(data) {
 					TT.Data.prefix = '';
 					TT.Data.add('/account', data, function(resp) {
-						window.location.href = '/' + resp.username;
+						window.location.href = '/';
 					});
 				}
 			});
