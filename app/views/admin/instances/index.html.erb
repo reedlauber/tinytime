@@ -1,0 +1,56 @@
+<div id="admin-projects">
+	<header class="admin-header">
+		<h1>Projects</h1>
+	</header>
+
+	<div id="admin-projects-clean">
+		<button id="admin-projects-clean-btn" class="btn btn-danger">Purge Unused Projects</button>
+	</div>
+
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>User</th>
+				<th>Slug</th>
+				<th>Access Key</th>
+				<th>Entries</th>
+				<th>Created</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @instances.each do |instance| %>
+		<% num_entries = instance.num_entries %>
+			<tr>
+				<td><strong><%= (instance.name || "Untitled") %></strong></td>
+				<td<%= ' class=claimed' if (instance.user != nil && instance.user.claimed?) %>>
+					<% if instance.user != nil %>
+						<%= link_to instance.user.username, admin_user_path(instance.user.id) %>
+					<% end %>
+				</td>
+				<td><%= instance.slug %></td>
+				<td><%= instance.token %></td>
+				<td><span class="label<%= ' label-info' if num_entries > 0 %>"><%= num_entries %></span></td>
+				<td><%= instance.created_at.to_formatted_s(:simple_date) %></td>
+				<td><a href="/" target="_blank">view project</a></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+
+	<%= paginate @instances %>
+</div>
+
+<% content_for :js do %>
+	<%= javascript_include_tag "admin/instances" %>
+	<script>
+		$(function() {
+			TinyTime.Manager({
+				components: {
+					instances: TinyTime.Instances()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

@@ -1,4 +1,9 @@
 class Admin::InstancesController < AdminController
+	def index
+		@active = "projects"
+		@instances = Instance.order("created_at desc").page(params[:page]).per(20)
+	end
+
 	def new
 		@active = "projects"
 		@user = User.where("id = ?", params[:user_id]).first
@@ -58,6 +63,25 @@ class Admin::InstancesController < AdminController
 		end
 
 		render :json => { :success => true, :id => params[:id] }
+	end
+
+	def clean
+		thirty_days_ago = Time.now - (60 * 60 * 24 * 30)
+		instances = Instance.joins("LEFT OUTER JOIN users ON users.id = instances.user_id").where("name IS NULL AND users.password IS NULL AND instances.created_at < ?", thirty_days_ago)
+
+		remove_count = 0
+		instances.each do |instance|
+			if(instance.num_entries == 0)
+				remove_count += 1
+				if(instance.user == nil)
+					instance.destroy
+				else
+					instance.user.destroy
+				end
+			end
+		end
+
+		render :json => { :success => true, :count => remove_count }
 	end
 
 	private 

@@ -27,15 +27,17 @@ class User < ActiveRecord::Base
   #  self.password_hash = @password
   #end
 
-  @@adjs = ["big", "brave", "bright", "busy", "careful", "clever", "cool", "daring", "fair", "fierce", 
-    "free", "fun", "fuzzy", "good", "green", "grey", "happy", "light", "long", "noisy", 
-    "orange", "polite", "proud", "purple", "quiet", "red", "rich", "sharp", "silent", "strong", 
-    "sweet", "tidy", "useful", "violet", "warm", "yellow", "young", "teal", "plaid", "grand", 
-    "super", "stable", "thoughtful", "calm", "powerful"]
+  @@adjs = ["big", "brave", "bright", "busy", "careful", "clever", "cool", "cuddly", "cute", "daring", 
+    "fair", "fierce", "free", "fun", "fuzzy", "good", "green", "grey", "happy", "light", 
+    "long", "noisy", "orange", "polite", "proud", "purple", "quiet", "red", "rich", "sharp", 
+    "silent", "strong", "sweet", "tidy", "useful", "violet", "warm", "yellow", "young", "teal", 
+    "plaid", "grand", "super", "stable", "thoughtful", "calm", "powerful"]
   
-  @@nouns = ["cat", "chihuahua", "dragon", "elk", "emu", "finch", "flower", "fountain", "hamburger", "igloo", 
-    "lighthouse", "llama", "marmot", "ninja", "pants", "pillow", "pirate", "planet", "platypus", "river", 
-    "rug", "sailboat", "salamander", "sloth", "spider", "star", "stone", "tree", "turtle", "waterfall"]
+  @@nouns = ["alligator", "alpaca", "beachball", "bicycle", "candle", "cat", "chihuahua", "cougar", "coyfish", "dragon", 
+    "elk", "emu", "finch", "flower", "forest", "fountain", "frisbee", "hamburger", "hotdog", "igloo", 
+    "lemon", "lighthouse", "lime", "llama", "marmot", "moon", "ninja", "ocean", "pants", "pillow", 
+    "pirate", "placemat", "planet", "platypus", "river", "rug", "sailboat", "salamander", "sloth", "spider", 
+    "star", "stick", "stone", "tree", "turtle", "waterfall", "whale"]
     
   def self.generate_random_name num
     name = ''

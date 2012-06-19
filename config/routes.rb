@@ -23,6 +23,8 @@ Tinytime::Application.routes.draw do
     resources :users do
       resources :instances
     end
+    resources :instances
+    post "/instances/clean" => "instances#clean"
   end
 
   # Export
