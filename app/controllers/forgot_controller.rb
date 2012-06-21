@@ -48,7 +48,7 @@ class ForgotController < ApplicationController
 				@error = "Couldn't find an account."
 			else
 				if params[:token] == nil || params[:token] != @user.reminder_token
-					@error = "Sorry, this request is not valid. (#{params[:token]} != #{user.reminder_token})"
+					@error = "Sorry, this request is not valid. (#{params[:token]} != #{@user.reminder_token})"
 				else
 					if @user.reminded_on < Time.now - (60 * 60 * 24)
 						@error = "Sorry, your password reset link has expired."
