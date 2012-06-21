@@ -15,6 +15,8 @@ end
 
 module Tinytime
   class Application < Rails::Application
+    YAML.load_file("#{Rails.root}/config/config.yml").each { |k,v| config.send "#{k}=", v }
+    
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -51,5 +53,7 @@ module Tinytime
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.action_mailer.default_url_options = { :host => "tinyti.me" }
   end
 end

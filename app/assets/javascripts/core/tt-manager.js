@@ -22,6 +22,7 @@
 					m += '</ul>';
 					message = m;
 				}
+				opts = opts || {};
 				var $msg = $('<div class="alert alert-block tt-form-msg tt-shadow"></div>').html(message).appendTo('body').hide();
 				if(opts.style) {
 					$msg.addClass(opts.style)

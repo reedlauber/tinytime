@@ -12,7 +12,10 @@ Tinytime::Application.routes.draw do
   post "/login" => "log_in#login"
 
   # Forgot
+  get "/forgot/reset" => "forgot#reset"
+  post "/forgot/reset" => "forgot#reset_update"
   get "/forgot" => "forgot#index"
+  post "/forgot" => "forgot#send_reminder"
 
   # Log Out
   get "/logout" => "logout#index"

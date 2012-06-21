@@ -1,0 +1,32 @@
+<div id="forgot">
+	<h2>Forgot Your Password?</h2>
+
+	<p>Enter your email address to get a password reset link</p>
+
+	<form class="form-stacked well tt-simple-form">
+		<ul class="unstyled">
+			<li class="control-group">
+				<label for="email" class="control-label">Email Address</label>
+				<div class="controls">
+					<input type="email" id="email" class="input-large" />
+				</div>
+			</li>
+		</ul>
+		<div class="form-actions">
+			<button id="forgot-btn" class="btn btn-primary">Send me a reminder</button> 
+			<a href="/login">Cancel</a>
+		</div>
+	</form>
+</div>
+
+<% content_for :js do %>
+	<script>
+		$(function() {
+			TinyTime.Manager({
+				components: {
+					forgot: TinyTime.Forgot()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

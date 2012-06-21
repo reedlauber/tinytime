@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password
+  attr_accessible :username, :email, :password, :reminder_token, :reminded_on
   validates_presence_of :username, :email, :password
   validates_uniqueness_of :username, :message => "That username is already taken."
   validates_uniqueness_of :email, :message => "An account with that email address already exists."

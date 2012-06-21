@@ -34,8 +34,13 @@
 			_p.init = function(manager) {
 				_c.manager = manager;
 
+				var $el;
+				if(_c.options.id) {
+					$el = _c['$' + _c.options.id] = $('#' + _c.options.id);
+				}
+
 				if(typeof oninit === 'function') {
-					oninit.call(_c, _c.options, _p);
+					oninit.call(_c, _c.options, _p, $el);
 				}
 
 				return _p;

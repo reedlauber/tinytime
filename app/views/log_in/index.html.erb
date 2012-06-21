@@ -1,12 +1,12 @@
 <div id="login">
 	<h2>Log In</h2>
 
-	<div class="form-stacked">
+	<div class="form-stacked well tt-simple-form">
 		<fieldset>
 			<ul class="unstyled inputs-list">
 				<li class="clearfix">
-					<label for="username">Username</label>
-					<input type="text" id="username" />
+					<label for="username">Username or Email</label>
+					<input type="text" id="username" value="<%= params[:email] %>" />
 				</li>
 				<li class="clearfix">
 					<label for="password">Password</label>
@@ -14,7 +14,7 @@
 				</li>
 			</ul>
 			<div class="form-actions">
-				<button id="login-btn" class="btn primary">Log In</button>
+				<button id="login-btn" class="btn btn-primary">Log In</button>
 			</div>
 		</fieldset>
 	</div>

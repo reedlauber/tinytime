@@ -1,0 +1,40 @@
+<div id="forgot-reset" data-email="<%= params[:email] %>" data-token="<%= params[:token] %>">
+	<h2>Reset Your Password</h2>
+
+	<% if @error != nil %>
+	<%= @error %>
+	<% else %>
+	<form class="form-stacked well tt-simple-form">
+		<ul class="unstyled">
+			<li class="control-group">
+				<label class="control-label">New Password</label>
+				<div class="controls">
+					<input type="password" id="password" class="input-large" />
+				</div>
+			</li>
+			<li class="control-group">
+				<label class="control-label">Confirm Password</label>
+				<div class="controls">
+					<input type="password" id="password2" class="input-large" />
+				</div>
+			</li>
+		</ul>
+		<div class="form-actions">
+			<button id="forgot-reset-btn" class="btn btn-primary">Reset Password</button> 
+			<%= link_to 'Cancel', login_url %>
+		</div>
+	</form>
+	<% end %>
+</div>
+
+<% content_for :js do %>
+	<script>
+		$(function() {
+			TinyTime.Manager({
+				components: {
+					reset: TinyTime.Reset()
+				}
+			}).init();
+		});
+	</script>
+<% end %>

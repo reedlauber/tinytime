@@ -22,3 +22,4 @@
 //= require components/tt-login.js
 //= require components/tt-signup.js
 //= require components/tt-forgot.js
+//= require components/tt-reset.js

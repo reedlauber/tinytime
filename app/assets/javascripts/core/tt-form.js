@@ -1,7 +1,7 @@
 (function(TT) {
 	TT.Form = function(options) {
 		var _self = {
-				onSubmit: options.onSubmit || function() {}
+				onSubmit: options.onSubmit || false
 			},
 			_context = options.context || '#content',
 			_fields = options.fields || [],
@@ -14,6 +14,7 @@
 					var data = TT.Form.getValues(_fields, _context, _data);
 					_self.onSubmit(data);
 				}
+				return false;
 			});
 		}
 
