@@ -15,8 +15,8 @@ end
 
 module Tinytime
   class Application < Rails::Application
-    YAML.load_file("#{Rails.root}/config/config.yml").each { |k,v| config.send "#{k}=", v }
-    
+    YAML.load_file("#{Rails.root}/config/config.yml").each { |k,v| config.send "#{k}=", v } if File.exists? "#{Rails.root}/config/config.yml"
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
