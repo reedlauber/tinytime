@@ -57,5 +57,5 @@ Tinytime::Application.configure do
   config.assets.digest = true
 
   config.assets.precompile += ['admin.css', 'tinytime.css', 'tt-home.css', 'tt-invoice.css', 'tt-newinvoice.css', 
-    'tinytime.js', 'admin.js']
+    'tinytime.js', 'admin/admin.js']
 end
