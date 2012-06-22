@@ -27,7 +27,7 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 
 /* Extras (Right Aside) */
 .tt-extras { position:absolute;top:0;left:100%;z-index:1; }
-	.tt-extras-section { margin:8px 0 16px;padding:1em;width:120px;border:1px solid #888;border-left:0;background-color:#f0f0f0;border-radius:0 8px 8px 0; }
+	.tt-extras .tt-box { margin:8px 0 16px;width:120px;border-left:0;border-radius:0 4px 4px 0; }
 
 /* Time Summary */
 .tt-summary { }
@@ -48,7 +48,7 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 	.tt-export form { margin:0; }
 
 /* Timer */
-.tt-timer { position:absolute;top:8px;right:100%;z-index:1;padding:1em;width:64px;text-align:right;border:1px solid #888;border-right:0;background-color:#f0f0f0;border-radius:8px 0 0 8px; }
+.tt-timer { position:absolute;top:8px;right:100%;z-index:1;padding:1em;width:64px;text-align:right;border-right:0;border-radius:4px 0 0 4px; }
 	.tt-timer h5 { line-height:normal; }
 	.tt-timer-time { display:none;margin-top:1em;font-weight:bold;color:#777;letter-spacing:1px; }
 		.tt-timer-time-last { display:none;color:#888;font-size:0.8em; }

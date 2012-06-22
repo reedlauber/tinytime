@@ -43,12 +43,12 @@
 
 <% content_for :after do %>
 <aside id="extras" class="tt-extras">
-	<section id="summary" class="tt-extras-section tt-summary tt-shadow">
+	<section id="summary" class="tt-box tt-summary">
 		<h3>Total Time</h3>
 		<div class="tt-summary-time"></div>
 	</section>
 	
-	<section id="invoices" class="tt-shadow tt-extras-section tt-expand tt-invoices">
+	<section id="invoices" class="tt-box tt-expand tt-invoices">
 		<% if(@invoices.count == 0) %>
 		<h3>Invoices</h3>
 		<% else %>
@@ -65,7 +65,7 @@
 		<a href="/<%="#{@username}/#{@slug}/#{@token}" %>/invoices/new" class="btn btn-primary btn-small tt-expand-reveal-inline">Add</a>
 	</section>
 
-	<section id="export" class="tt-shadow tt-extras-section tt-expand tt-export">
+	<section id="export" class="tt-box tt-expand tt-export">
 		<h3>Export</h3>
 		<form action="/<%="#{@username}/#{@slug}/#{@token}" %>/export" method="GET" class="tt-expand-reveal">
 			<input id="export-btn" type="submit" class="btn btn-primary btn-small" value="Export Entries" />
