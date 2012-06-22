@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    unless @logged_in
+    unless @logged_in && @logged_in_user.is_admin
       redirect_to "/login"
     end
   end

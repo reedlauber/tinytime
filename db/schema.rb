@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620134439) do
+ActiveRecord::Schema.define(:version => 20120622145251) do
 
   create_table "entries", :force => true do |t|
     t.integer  "instance_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20120620134439) do
     t.datetime "accessed_at"
     t.string   "reminder_token"
     t.datetime "reminded_on"
+    t.boolean  "is_admin",        :default => false
   end
 
   add_index "users", ["username"], :name => "index_users_on_username"
