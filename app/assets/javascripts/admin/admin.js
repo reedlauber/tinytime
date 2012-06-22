@@ -9,5 +9,4 @@
 //= require core/tt-form.js
 //= require core/tt-component.js
 //= require core/tt-manager.js
-
-//= require admin
+//= require_tree .

@@ -9,7 +9,9 @@
 				id = $li.attr('data-id');
 
 			TT.Data.del('/admin/users/' + userId + '/instances/' + id, function() {
-				$li.fadeOut();
+				$li.fadeOut(function() {
+					$li.remove();
+				});
 			});
 		});
 	});
