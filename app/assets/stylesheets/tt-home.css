@@ -53,8 +53,10 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 	.tt-timer-time { display:none;margin-top:1em;font-weight:bold;color:#777;letter-spacing:1px; }
 		.tt-timer-time-last { display:none;color:#888;font-size:0.8em; }
 	.tt-timer-btns { display:none;margin-top:1em;white-space:nowrap;overflow:hidden; }
-		.tt-timer .info { margin-right:8px; }
+		.tt-timer .btn-info { margin-right:8px; }
 
 .tt-timer { }
 .tt-timer:hover { width:140px; }
 	.tt-timer:hover .tt-timer-time { color:#444; }
+
+#content { margin:0 220px 0 180px;max-width:none; }
