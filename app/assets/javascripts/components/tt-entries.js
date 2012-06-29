@@ -16,7 +16,7 @@
 			$summary;
 
 		var _rowTmpl = ['<tr data-id="{{id}}">',
-							'<td class="tt-entry-time span3">{{time}}</td>',
+							'<td class="tt-entry-time">{{time}}</td>',
 							'<td class="tt-entry-desc">',
 								'{{#tags}}<span class="label label-info">{{tags}}</span>{{/tags}}',
 								'{{description}}',
@@ -190,6 +190,10 @@
 				
 				_updateGrandTotal();
 				_entries.push(entry);
+			});
+
+			$('#export-btn').click(function() {
+				$('#export-form').submit();
 			});
 		}
 		

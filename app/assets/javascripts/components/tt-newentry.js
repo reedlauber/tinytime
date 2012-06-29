@@ -131,6 +131,12 @@
 				
 				return false;
 			});
+
+			$('#' + _options.id + '-open-btn, #' + _options.id + '-close-btn').click(function() {
+				$('.tt-newentry-fields').slideToggle();
+				$('#' + _options.id + '-open-btn').toggle();
+				return false;
+			});
 			
 			var $label = $('.tt-newentry-workdate-label').click(function() {
 				$(this).hide();

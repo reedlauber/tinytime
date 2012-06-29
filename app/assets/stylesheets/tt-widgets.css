@@ -1,19 +1,4 @@
-/* Entries */
-.tt-entries { margin-top:1em; }
 
-	.tt-entry-group { margin-top:2em; }
-		.tt-entry-group table { margin-bottom:0; }
-		.tt-entry-group footer { display:inline-block;border-top:0;margin-top:8px;margin-left:4px;padding:4px 8px;padding-top:4px;background-color:#ccc;font-size:0.8em;font-weight:bold;color:#505050;
-			border-radius:4px; }
-
-	.tt-entry-grouplabel { color:#666;font-size:0.8em;font-weight:bold;text-transform:uppercase; }
-	.tt-entry-time { color:#666;font-size:1.2em;font-weight:bold; }
-	.tt-entries .label { margin-top:-2px;margin-right:4px; }
-	.tt-entry-last { width:40px;text-align:right; }
-	
-	.tt-entry-del { display:none; }
-	.tt-entries-edit .tt-entry-del { display:inline; }
-		.tt-entry-del.close { line-height:14px; }
 
 /* Slider */
 .tt-slider { position:relative;width:400px;height:20px;z-index:1; }

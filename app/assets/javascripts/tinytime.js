@@ -1,8 +1,7 @@
 //= require jquery
 //= require vendor/date.js
 //= require vendor/mustache.js
-//= require vendor/bootstrap-dropdown.js
-//= require vendor/bootstrap-modal.js
+//= require vendor/bootstrap.min.js
 //= require core/tt-core.js
 //= require core/tt-util.js
 //= require core/tt-data.js

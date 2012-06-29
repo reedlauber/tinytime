@@ -8,31 +8,69 @@
 </div>
 
 <form id="newentry" class="tt-newentry">
-	<header class="row-fluid">
-		<div class="span2">Day</div>
-		<div class="span2">Time</div>
-		<div class="span4">Description</div>
-		<div class="span2">Type</div>
-	</header>
+	<button id="newentry-open-btn" class="btn btn-primary btn-small tt-newentry-open-btn">Add Entry</button>
 	<div class="row-fluid tt-newentry-fields">
 		<div id="newentry-workdate" class="tt-newentry-workdate span2" data-date="<%=Time.now.to_formatted_s(:simple_date) %>">
+			<label>Day</label>
 			<span class="tt-newentry-workdate-label label label-success">Today</span>
 			<input type="text" class="input-small" value="<%=Time.now.to_formatted_s(:simple_date) %>">
 		</div>
-		<div class="span2 clearfix">
+		<div class="span2">
+			<label>Time</label>
 			<input type="text" id="newentry-time" class="input-small" placeholder="2h 15m">
 		</div>
-		<div class="span4 clearfix">
+		<div class="span4">
+			<label>Description</label>
 			<input type="text" id="newentry-desc" class="input" placeholder="Redesigning icons... again.">
 		</div>
-		<div class="span2 clearfix">
-			<input type="text" id="newentry-tags" class="input-small" placeholder="graphics">
+		<div class="span3">
+			<label>Type</label>
+			<input type="text" id="newentry-tags" class="input" placeholder="graphics">
 		</div>
-		<div class="span1">
-			<button id="newentry-btn" class="btn btn-small btn-primary">Add</button>
+		<div class="span1 tt-newentry-actions">
+			<button id="newentry-btn" class="btn btn-small btn-primary">Add</button> 
+			<a id="newentry-close-btn" href="javascript:void(0)">Cancel</a>
 		</div>
 	</div>
 </form>
+
+<% content_for :before do %>
+<div class="row-fluid tt-extras">
+	<aside id="extras" class="tt-extras-aside">
+		<section id="summary" class="tt-box tt-summary">
+			<h3>Total Time</h3>
+			<span class="tt-summary-time"></span>
+		</section>
+		
+		<section id="invoices" class="tt-box tt-expand tt-invoices">
+			<% if(@invoices.count == 0) %>
+			<h3>Invoices</h3>
+			<% else %>
+			<h3>Invoices <span class="tt-invoices-count">(<%=@invoices.count %>)</span></h3>
+			<ul class="unstyled tt-expand-reveal tt-invoices-list">
+				<% @invoices.each do |invoice| %>
+				<li class="tt-corner-all">
+					<a href="/<%="#{@username}/#{@slug}/invoices/#{invoice.rank}" %>" target="_blank"><%=invoice.title %></a>
+					<!--<a href="javascript:void(0)" class="close" title="Delete Invoice">&times;</a>-->
+				</li>
+				<% end%>
+			</ul>
+			<% end %>
+			<div class="tt-expand-reveal">
+				<a href="/<%="#{@username}/#{@slug}/#{@token}" %>/invoices/new" class="btn btn-primary btn-small">Add</a>
+			</div>
+		</section>
+
+		<section id="export" class="tt-box tt-expand tt-export">
+			<h3>Export</h3>
+			<form if="export-form" action="/<%="#{@username}/#{@slug}/#{@token}" %>/export" method="GET"></form>
+			<div class="tt-expand-reveal">
+				<a id="export-btn" class="btn btn-primary btn-small">Export</a>
+			</div>
+		</section>
+	</aside>
+</div>
+<% end %>
 
 <div id="entries" class="tt-entries tt-entries-edit">
 	<section class="tt-entry-group">
@@ -40,39 +78,6 @@
 		<p>No entries added yet.</p>
 	</section>
 </div>
-
-<% content_for :after do %>
-<aside id="extras" class="tt-extras">
-	<section id="summary" class="tt-box tt-summary">
-		<h3>Total Time</h3>
-		<div class="tt-summary-time"></div>
-	</section>
-	
-	<section id="invoices" class="tt-box tt-expand tt-invoices">
-		<% if(@invoices.count == 0) %>
-		<h3>Invoices</h3>
-		<% else %>
-		<h3>Invoices <span class="tt-invoices-count">(<%=@invoices.count %>)</span></h3>
-		<ul class="unstyled tt-expand-reveal tt-invoices-list">
-			<% @invoices.each do |invoice| %>
-			<li class="tt-corner-all">
-				<a href="/<%="#{@username}/#{@slug}/invoices/#{invoice.rank}" %>" target="_blank"><%=invoice.title %></a>
-				<!--<a href="javascript:void(0)" class="close" title="Delete Invoice">&times;</a>-->
-			</li>
-			<% end%>
-		</ul>
-		<% end %>
-		<a href="/<%="#{@username}/#{@slug}/#{@token}" %>/invoices/new" class="btn btn-primary btn-small tt-expand-reveal-inline">Add</a>
-	</section>
-
-	<section id="export" class="tt-box tt-expand tt-export">
-		<h3>Export</h3>
-		<form action="/<%="#{@username}/#{@slug}/#{@token}" %>/export" method="GET" class="tt-expand-reveal">
-			<input id="export-btn" type="submit" class="btn btn-primary btn-small" value="Export Entries" />
-		</form>
-	</section>
-</aside>
-<% end %>
 
 <% content_for :js do %>
 	<script>

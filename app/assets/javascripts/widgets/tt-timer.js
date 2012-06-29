@@ -1,6 +1,6 @@
 (function(TT) {
 	TT.Timer = function(options) {
-		var _c = TT.Component({ id:'timer' }, options);
+		var _c = TT.Component({ id:'timer', target:'.tt-extras' }, options);
 		
 		var $timer,
 				$time,
@@ -88,14 +88,14 @@
 		}
 		
 		_c.oninit = function() {
-			$timer = $('<div id="' + _c.options.id + '" class="tt-expand tt-box tt-timer tt-requireinstance" />').appendTo(_c.options.target).append('<h5>Timer</h5>');
+			$timer = $('<div id="' + _c.options.id + '" class="tt-expand tt-box tt-timer tt-requireinstance" />').prependTo(_c.options.target).append('<h3>Timer</h3>');
 			
 			$time = $('<div class="tt-timer-time">00</div>').appendTo($timer);
 			
 			$btns = $('<div class="tt-expand-reveal tt-timer-btns" />').appendTo($timer);
-			$start = $('<span class="btn btn-success">Start</span>').appendTo($btns);
-			$pause = $('<span class="btn btn-info">Pause</span>').appendTo($btns).hide();
-			$stop = $('<span class="btn btn-danger">Stop</span>').appendTo($btns).hide();
+			$start = $('<span class="btn btn-success btn-small">Start</span>').appendTo($btns);
+			$pause = $('<span class="btn btn-info btn-small">Pause</span>').appendTo($btns).hide();
+			$stop = $('<span class="btn btn-danger btn-small">Stop</span>').appendTo($btns).hide();
 			
 			_setupEvents();
 		};
