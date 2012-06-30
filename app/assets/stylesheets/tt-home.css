@@ -24,7 +24,7 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 		.tt-newentry-fields input { padding:6px;max-width:90%; }
 		.tt-newentry-actions { margin-top:1.5em;padding-top:5px; }
 
-	.tt-newentry-open-btn { display:none; }
+	.tt-newentry-open-btn, .tt-newentry-close-btn { display:none; }
 
 /* Entries */
 .tt-entries { margin-top:1em; }
@@ -125,7 +125,7 @@ input.tt-title-input { display:none;padding:9px 8px;font-size:24px;font-weight:b
 }
 
 @media (max-width: 320px) {
-	.tt-newentry-open-btn { display:inline; }
+	.tt-newentry-open-btn, .tt-newentry-close-btn { display:inline; }
 	.tt-newentry-fields { display:none; }
 		.tt-newentry .row-fluid > [class*="span"] { float:none;width:auto; }
 
