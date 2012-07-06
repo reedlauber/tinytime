@@ -81,6 +81,9 @@
         elsif(params[:slug] == nil)
           # Found a user, but no instance specified.
           render "home/index"
+        elsif(params[:slug] == "new")
+          provision_instance
+          redirect_to "/#{@user.username}/#{@instance.slug}/#{@instance.token}"
         else
           # user and instance given. look for specified instance.
           @username = @user.username
